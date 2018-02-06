@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		08652C47DFE9D686B19117AC /* Pods_CrypticGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC0AF89DC3578A8C5FB30AC /* Pods_CrypticGarden.framework */; };
+		51C66AF9BFBA4346B69FCD7B /* Pods_CrypticGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F12ECCC938F177AC275131 /* Pods_CrypticGarden.framework */; };
+		841C2346200EABFA00F5A6B4 /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2340200EABF900F5A6B4 /* AutocompleteView.swift */; };
+		841C2347200EABFA00F5A6B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841C2341200EABF900F5A6B4 /* Main.storyboard */; };
+		841C2348200EABFA00F5A6B4 /* SearchResutlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2342200EABF900F5A6B4 /* SearchResutlView.swift */; };
+		841C2349200EABFA00F5A6B4 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2343200EABFA00F5A6B4 /* SearchVC.swift */; };
+		841C234A200EABFA00F5A6B4 /* TrendingSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2344200EABFA00F5A6B4 /* TrendingSearchView.swift */; };
+		841C234B200EABFA00F5A6B4 /* SearchResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2345200EABFA00F5A6B4 /* SearchResultMapView.swift */; };
+		841C2350200EB10800F5A6B4 /* Array+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C234F200EB10800F5A6B4 /* Array+Functions.swift */; };
+		841C2352200EB19B00F5A6B4 /* String+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2351200EB19B00F5A6B4 /* String+Functions.swift */; };
+		841C2355200EB3D800F5A6B4 /* CGUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2354200EB3D800F5A6B4 /* CGUser.swift */; };
+		841C2357200EB4C600F5A6B4 /* CGMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2356200EB4C600F5A6B4 /* CGMessage.swift */; };
+		844C37E220221009003806B0 /* CGLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C37E120221008003806B0 /* CGLocation.swift */; };
+		847D3C7420174B2B00EC64BC /* APIConnector+Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D3C7120174B2B00EC64BC /* APIConnector+Connect.swift */; };
+		847D3C7520174B2B00EC64BC /* APIConnector+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D3C7220174B2B00EC64BC /* APIConnector+Messages.swift */; };
+		847D3C7620174B2B00EC64BC /* APIConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D3C7320174B2B00EC64BC /* APIConnector.swift */; };
+		847D3C7820174EFB00EC64BC /* CGUserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D3C7720174EFB00EC64BC /* CGUserSession.swift */; };
+		847D3C7B201F30EE00EC64BC /* AutocompleteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D3C7A201F30EE00EC64BC /* AutocompleteView.xib */; };
+		847D3C7D201F319E00EC64BC /* AutocompleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D3C7C201F319E00EC64BC /* AutocompleteCell.xib */; };
+		847D3C81201F38BE00EC64BC /* NewMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847D3C7F201F38BE00EC64BC /* NewMessage.storyboard */; };
+		847D3C82201F38BE00EC64BC /* NewMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D3C80201F38BE00EC64BC /* NewMessageVC.swift */; };
+		84C0D4C52010CCE90035E9AC /* MKSAutocompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0D4C42010CCE90035E9AC /* MKSAutocompleteResult.swift */; };
+		84C0D4C72010CD5E0035E9AC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0D4C62010CD5E0035E9AC /* LocationManager.swift */; };
+		84C0D4C92010D1C10035E9AC /* MapFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0D4C82010D1C00035E9AC /* MapFunctions.swift */; };
+		84C0D4CB2010D25A0035E9AC /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0D4CA2010D25A0035E9AC /* PlaceAnnotation.swift */; };
+		84C0D4D62010DEA30035E9AC /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0D4D52010DEA30035E9AC /* LocationTableCell.swift */; };
+		84C0D4D82010DEE10035E9AC /* LocationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C0D4D72010DEE10035E9AC /* LocationTableCell.xib */; };
+		84C0D4DB2011FB290035E9AC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C0D4DA2011FB290035E9AC /* MapKit.framework */; };
+		84D3C8AB2007A98E003B7A01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D3C8AA2007A98E003B7A01 /* AppDelegate.swift */; };
+		84D3C8B22007A98F003B7A01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D3C8B12007A98F003B7A01 /* Assets.xcassets */; };
+		84D3C8B52007A98F003B7A01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D3C8B32007A98F003B7A01 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		08E153625EEE8B8D899A027D /* Pods-CrypticGarden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrypticGarden.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden.release.xcconfig"; sourceTree = "<group>"; };
+		1EC0AF89DC3578A8C5FB30AC /* Pods_CrypticGarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrypticGarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5719473E33FF998E694777BB /* Pods-CrypticGarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrypticGarden.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden.debug.xcconfig"; sourceTree = "<group>"; };
+		841C2340200EABF900F5A6B4 /* AutocompleteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
+		841C2341200EABF900F5A6B4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		841C2342200EABF900F5A6B4 /* SearchResutlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResutlView.swift; sourceTree = "<group>"; };
+		841C2343200EABFA00F5A6B4 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		841C2344200EABFA00F5A6B4 /* TrendingSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingSearchView.swift; sourceTree = "<group>"; };
+		841C2345200EABFA00F5A6B4 /* SearchResultMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultMapView.swift; sourceTree = "<group>"; };
+		841C234F200EB10800F5A6B4 /* Array+Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Functions.swift"; sourceTree = "<group>"; };
+		841C2351200EB19B00F5A6B4 /* String+Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Functions.swift"; sourceTree = "<group>"; };
+		841C2354200EB3D800F5A6B4 /* CGUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGUser.swift; sourceTree = "<group>"; };
+		841C2356200EB4C600F5A6B4 /* CGMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGMessage.swift; sourceTree = "<group>"; };
+		844C37E120221008003806B0 /* CGLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGLocation.swift; sourceTree = "<group>"; };
+		847D3C7120174B2B00EC64BC /* APIConnector+Connect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIConnector+Connect.swift"; sourceTree = "<group>"; };
+		847D3C7220174B2B00EC64BC /* APIConnector+Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIConnector+Messages.swift"; sourceTree = "<group>"; };
+		847D3C7320174B2B00EC64BC /* APIConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConnector.swift; sourceTree = "<group>"; };
+		847D3C7720174EFB00EC64BC /* CGUserSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGUserSession.swift; sourceTree = "<group>"; };
+		847D3C7A201F30EE00EC64BC /* AutocompleteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutocompleteView.xib; sourceTree = "<group>"; };
+		847D3C7C201F319E00EC64BC /* AutocompleteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutocompleteCell.xib; sourceTree = "<group>"; };
+		847D3C7F201F38BE00EC64BC /* NewMessage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewMessage.storyboard; sourceTree = "<group>"; };
+		847D3C80201F38BE00EC64BC /* NewMessageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageVC.swift; sourceTree = "<group>"; };
+		84C0D4C42010CCE90035E9AC /* MKSAutocompleteResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKSAutocompleteResult.swift; sourceTree = "<group>"; };
+		84C0D4C62010CD5E0035E9AC /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		84C0D4C82010D1C00035E9AC /* MapFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFunctions.swift; sourceTree = "<group>"; };
+		84C0D4CA2010D25A0035E9AC /* PlaceAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
+		84C0D4D52010DEA30035E9AC /* LocationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableCell.swift; sourceTree = "<group>"; };
+		84C0D4D72010DEE10035E9AC /* LocationTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationTableCell.xib; sourceTree = "<group>"; };
+		84C0D4DA2011FB290035E9AC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		84D3C8A72007A98E003B7A01 /* CrypticGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrypticGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D3C8AA2007A98E003B7A01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		84D3C8B12007A98F003B7A01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84D3C8B42007A98F003B7A01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84D3C8B62007A98F003B7A01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95F12ECCC938F177AC275131 /* Pods_CrypticGarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrypticGarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84D3C8A42007A98E003B7A01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C0D4DB2011FB290035E9AC /* MapKit.framework in Frameworks */,
+				08652C47DFE9D686B19117AC /* Pods_CrypticGarden.framework in Frameworks */,
+				51C66AF9BFBA4346B69FCD7B /* Pods_CrypticGarden.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		146C08DFCFECF92CE092402B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5719473E33FF998E694777BB /* Pods-CrypticGarden.debug.xcconfig */,
+				08E153625EEE8B8D899A027D /* Pods-CrypticGarden.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		841C234C200EAFFC00F5A6B4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				841C234D200EB02100F5A6B4 /* SearchVC */,
+				847D3C7E201F38A800EC64BC /* NewMessageVC */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		841C234D200EB02100F5A6B4 /* SearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				841C2341200EABF900F5A6B4 /* Main.storyboard */,
+				841C2343200EABFA00F5A6B4 /* SearchVC.swift */,
+				841C2345200EABFA00F5A6B4 /* SearchResultMapView.swift */,
+				841C2342200EABF900F5A6B4 /* SearchResutlView.swift */,
+				841C2344200EABFA00F5A6B4 /* TrendingSearchView.swift */,
+				84C0D4D72010DEE10035E9AC /* LocationTableCell.xib */,
+				84C0D4D52010DEA30035E9AC /* LocationTableCell.swift */,
+			);
+			path = SearchVC;
+			sourceTree = "<group>";
+		};
+		841C234E200EB0CC00F5A6B4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				841C2351200EB19B00F5A6B4 /* String+Functions.swift */,
+				841C234F200EB10800F5A6B4 /* Array+Functions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		841C2353200EB3A500F5A6B4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				84C0D4C42010CCE90035E9AC /* MKSAutocompleteResult.swift */,
+				847D3C7720174EFB00EC64BC /* CGUserSession.swift */,
+				841C2354200EB3D800F5A6B4 /* CGUser.swift */,
+				844C37E120221008003806B0 /* CGLocation.swift */,
+				841C2356200EB4C600F5A6B4 /* CGMessage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		847D3C7020174AF600EC64BC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				847D3C7320174B2B00EC64BC /* APIConnector.swift */,
+				847D3C7120174B2B00EC64BC /* APIConnector+Connect.swift */,
+				847D3C7220174B2B00EC64BC /* APIConnector+Messages.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		847D3C79201F30D300EC64BC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				847D3C7A201F30EE00EC64BC /* AutocompleteView.xib */,
+				841C2340200EABF900F5A6B4 /* AutocompleteView.swift */,
+				847D3C7C201F319E00EC64BC /* AutocompleteCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		847D3C7E201F38A800EC64BC /* NewMessageVC */ = {
+			isa = PBXGroup;
+			children = (
+				847D3C7F201F38BE00EC64BC /* NewMessage.storyboard */,
+				847D3C80201F38BE00EC64BC /* NewMessageVC.swift */,
+			);
+			path = NewMessageVC;
+			sourceTree = "<group>";
+		};
+		84C0D4CC2010D3970035E9AC /* MapStuff */ = {
+			isa = PBXGroup;
+			children = (
+				84C0D4C82010D1C00035E9AC /* MapFunctions.swift */,
+				84C0D4CA2010D25A0035E9AC /* PlaceAnnotation.swift */,
+			);
+			path = MapStuff;
+			sourceTree = "<group>";
+		};
+		84C0D4D92011FB290035E9AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84C0D4DA2011FB290035E9AC /* MapKit.framework */,
+				95F12ECCC938F177AC275131 /* Pods_CrypticGarden.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84D3C89E2007A98E003B7A01 = {
+			isa = PBXGroup;
+			children = (
+				84D3C8A92007A98E003B7A01 /* CrypticGarden */,
+				84D3C8A82007A98E003B7A01 /* Products */,
+				146C08DFCFECF92CE092402B /* Pods */,
+				84C0D4D92011FB290035E9AC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		84D3C8A82007A98E003B7A01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84D3C8A72007A98E003B7A01 /* CrypticGarden.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84D3C8A92007A98E003B7A01 /* CrypticGarden */ = {
+			isa = PBXGroup;
+			children = (
+				84D3C8B12007A98F003B7A01 /* Assets.xcassets */,
+				84D3C8AA2007A98E003B7A01 /* AppDelegate.swift */,
+				84C0D4C62010CD5E0035E9AC /* LocationManager.swift */,
+				841C234C200EAFFC00F5A6B4 /* ViewControllers */,
+				847D3C79201F30D300EC64BC /* Views */,
+				841C2353200EB3A500F5A6B4 /* Models */,
+				847D3C7020174AF600EC64BC /* Network */,
+				84C0D4CC2010D3970035E9AC /* MapStuff */,
+				A9AFD2B8EEE75C64A2CE6B0F /* Frameworks */,
+				841C234E200EB0CC00F5A6B4 /* Extensions */,
+				84D3C8BC2007AA43003B7A01 /* SupportingFiles */,
+			);
+			path = CrypticGarden;
+			sourceTree = "<group>";
+		};
+		84D3C8BC2007AA43003B7A01 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				84D3C8B32007A98F003B7A01 /* LaunchScreen.storyboard */,
+				84D3C8B62007A98F003B7A01 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		A9AFD2B8EEE75C64A2CE6B0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EC0AF89DC3578A8C5FB30AC /* Pods_CrypticGarden.framework */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84D3C8A62007A98E003B7A01 /* CrypticGarden */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84D3C8B92007A98F003B7A01 /* Build configuration list for PBXNativeTarget "CrypticGarden" */;
+			buildPhases = (
+				44169FFA6D620C7EE5F14C46 /* [CP] Check Pods Manifest.lock */,
+				84D3C8A32007A98E003B7A01 /* Sources */,
+				84D3C8A42007A98E003B7A01 /* Frameworks */,
+				84D3C8A52007A98E003B7A01 /* Resources */,
+				5E79C2240367F168A1BA6BE4 /* [CP] Embed Pods Frameworks */,
+				9F609B6122D897F43A698693 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CrypticGarden;
+			productName = CrypticGarden;
+			productReference = 84D3C8A72007A98E003B7A01 /* CrypticGarden.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84D3C89F2007A98E003B7A01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = Marks;
+				TargetAttributes = {
+					84D3C8A62007A98E003B7A01 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 84D3C8A22007A98E003B7A01 /* Build configuration list for PBXProject "CrypticGarden" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84D3C89E2007A98E003B7A01;
+			productRefGroup = 84D3C8A82007A98E003B7A01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84D3C8A62007A98E003B7A01 /* CrypticGarden */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84D3C8A52007A98E003B7A01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C0D4D82010DEE10035E9AC /* LocationTableCell.xib in Resources */,
+				847D3C7B201F30EE00EC64BC /* AutocompleteView.xib in Resources */,
+				84D3C8B52007A98F003B7A01 /* LaunchScreen.storyboard in Resources */,
+				847D3C7D201F319E00EC64BC /* AutocompleteCell.xib in Resources */,
+				84D3C8B22007A98F003B7A01 /* Assets.xcassets in Resources */,
+				847D3C81201F38BE00EC64BC /* NewMessage.storyboard in Resources */,
+				841C2347200EABFA00F5A6B4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		44169FFA6D620C7EE5F14C46 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CrypticGarden-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E79C2240367F168A1BA6BE4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F609B6122D897F43A698693 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84D3C8A32007A98E003B7A01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				847D3C7620174B2B00EC64BC /* APIConnector.swift in Sources */,
+				847D3C82201F38BE00EC64BC /* NewMessageVC.swift in Sources */,
+				841C234B200EABFA00F5A6B4 /* SearchResultMapView.swift in Sources */,
+				84C0D4C52010CCE90035E9AC /* MKSAutocompleteResult.swift in Sources */,
+				841C234A200EABFA00F5A6B4 /* TrendingSearchView.swift in Sources */,
+				844C37E220221009003806B0 /* CGLocation.swift in Sources */,
+				841C2349200EABFA00F5A6B4 /* SearchVC.swift in Sources */,
+				841C2348200EABFA00F5A6B4 /* SearchResutlView.swift in Sources */,
+				841C2357200EB4C600F5A6B4 /* CGMessage.swift in Sources */,
+				84C0D4CB2010D25A0035E9AC /* PlaceAnnotation.swift in Sources */,
+				847D3C7520174B2B00EC64BC /* APIConnector+Messages.swift in Sources */,
+				841C2352200EB19B00F5A6B4 /* String+Functions.swift in Sources */,
+				841C2350200EB10800F5A6B4 /* Array+Functions.swift in Sources */,
+				84C0D4C72010CD5E0035E9AC /* LocationManager.swift in Sources */,
+				84C0D4D62010DEA30035E9AC /* LocationTableCell.swift in Sources */,
+				847D3C7820174EFB00EC64BC /* CGUserSession.swift in Sources */,
+				84C0D4C92010D1C10035E9AC /* MapFunctions.swift in Sources */,
+				841C2346200EABFA00F5A6B4 /* AutocompleteView.swift in Sources */,
+				84D3C8AB2007A98E003B7A01 /* AppDelegate.swift in Sources */,
+				841C2355200EB3D800F5A6B4 /* CGUser.swift in Sources */,
+				847D3C7420174B2B00EC64BC /* APIConnector+Connect.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		84D3C8B32007A98F003B7A01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84D3C8B42007A98F003B7A01 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84D3C8B72007A98F003B7A01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		84D3C8B82007A98F003B7A01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84D3C8BA2007A98F003B7A01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5719473E33FF998E694777BB /* Pods-CrypticGarden.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MQK5ADKQSE;
+				INFOPLIST_FILE = "$(SRCROOT)/CrypticGarden/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentin.CrypticGarden;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84D3C8BB2007A98F003B7A01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08E153625EEE8B8D899A027D /* Pods-CrypticGarden.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MQK5ADKQSE;
+				INFOPLIST_FILE = "$(SRCROOT)/CrypticGarden/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentin.CrypticGarden;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84D3C8A22007A98E003B7A01 /* Build configuration list for PBXProject "CrypticGarden" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84D3C8B72007A98F003B7A01 /* Debug */,
+				84D3C8B82007A98F003B7A01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84D3C8B92007A98F003B7A01 /* Build configuration list for PBXNativeTarget "CrypticGarden" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84D3C8BA2007A98F003B7A01 /* Debug */,
+				84D3C8BB2007A98F003B7A01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84D3C89F2007A98E003B7A01 /* Project object */;
+}
