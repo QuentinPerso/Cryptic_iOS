@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import Alamofire
 import GooglePlaces
-import GoogleMaps
 
 class NewMessageVC: UIViewController {
     

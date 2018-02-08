@@ -555,3 +555,9 @@ Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden-umbrella.h
 Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden.debug.xcconfig
 Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden.modulemap
 Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden.release.xcconfig
+CrypticGarden.xcodeproj/xcuserdata/quentin.xcuserdatad/xcschemes/xcschememanagement.plist
+CrypticGarden.xcworkspace/xcuserdata/quentin.xcuserdatad/UserInterfaceState.xcuserstate
+Pods/Pods.xcodeproj/xcuserdata/quentin.xcuserdatad/xcschemes/Alamofire.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/quentin.xcuserdatad/xcschemes/AlamofireImage.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/quentin.xcuserdatad/xcschemes/Pods-CrypticGarden.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/quentin.xcuserdatad/xcschemes/xcschememanagement.plist

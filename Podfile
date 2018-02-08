@@ -8,7 +8,6 @@ target 'CrypticGarden' do
   # Pods for CrypticGarden
 
     pod 'GooglePlaces'
-    pod 'GoogleMaps'
 
     pod 'Alamofire'
     pod 'AlamofireImage'

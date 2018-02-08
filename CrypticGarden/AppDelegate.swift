@@ -9,7 +9,6 @@
 import UIKit
 
 import GooglePlaces
-import GoogleMaps
 
 import Alamofire
 
@@ -22,8 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         GMSPlacesClient.provideAPIKey("AIzaSyAdHCHmiKVw1_66qaq6zK4P9_IItBcu37c")
-        GMSServices.provideAPIKey("AIzaSyAdHCHmiKVw1_66qaq6zK4P9_IItBcu37c")
-        
+
         return true
     }
 
