@@ -13,14 +13,22 @@ import GooglePlaces
 
 class NewMessageVC: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var tagTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var bottomBarBotConstraint: NSLayoutConstraint!
+    var bottomBarInitialSize:CGFloat = 0.0
     
     var autocompleteView: AutocompleteView!
     
     var locationToAdd:CGLocation!
+    
+    var messageAddedAction:((_ location:CGLocation, _ message:CGMessage)->())?
 
 //    var searchBarShouldBeginEditing = true
     
@@ -56,6 +64,7 @@ class NewMessageVC: UIViewController {
         
         searchCompleter.delegate = self
 
+        
         LocationManager.shared.startUpdatingLocation(oneShot: true) { (coord, error) in
             self.autofillSearchBar()
             
@@ -65,6 +74,11 @@ class NewMessageVC: UIViewController {
     
     func autofillSearchBar() {
         
+        if locationToAdd != nil {
+            searchBar.placeholder = locationToAdd.googleName
+            return
+        }
+        
         GMSPlacesClient().currentPlace(callback: { (placeLikelihoodList, error) -> Void in
             if let error = error {
                 print("Pick Place error: \(error.localizedDescription)")
@@ -73,14 +87,20 @@ class NewMessageVC: UIViewController {
             
             if let placeLikelihoodList = placeLikelihoodList, let likelihood = placeLikelihoodList.likelihoods.first {
                 
+                
                 let place = likelihood.place
+                for comp in place.addressComponents! {
+                   print(comp.name)
+                }
+                
                 self.searchBar.placeholder = place.name
+                
                 let loc = CGLocation()
                 loc.googleAddress = place.formattedAddress
+                loc.googleName = place.name
                 loc.coordinate = place.coordinate
                 loc.googlePlaceId = place.placeID
                 self.locationToAdd = loc
-                
                 
             }
         })
@@ -93,6 +113,38 @@ class NewMessageVC: UIViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        var autocompleteRect = CGRect()
+        autocompleteRect.origin.y = searchBar.frame.origin.y + searchBar.frame.size.height
+        autocompleteRect.size.width = self.view.frame.size.width
+        autocompleteRect.size.height = self.view.frame.size.height - autocompleteRect.origin.y
+        autocompleteView.frame = autocompleteRect
+
+        view.bringSubview(toFront: autocompleteView)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .default
+    }
+    
+    
+    
+    
+}
+
+//************************************
+// MARK: - Actions and Navigation
+//************************************
+
+extension NewMessageVC {
     
     @IBAction func backButtonClicked(_ sender: Any) {
         
@@ -104,55 +156,41 @@ class NewMessageVC: UIViewController {
         }
     }
     
-    @IBAction func clearDBClicked(_ sender: Any) {
-        APIConnector.dropDataBase { (success) in
-            
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        var autocompleteRect = CGRect()
-        autocompleteRect.origin.y = searchBar.frame.origin.y + searchBar.frame.size.height
-        autocompleteRect.size.width = self.view.frame.size.width
-        autocompleteRect.size.height = self.view.frame.size.height - autocompleteRect.origin.y
-        autocompleteView.frame = autocompleteRect
-
-        view.bringSubview(toFront: autocompleteView)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
-    
     @IBAction func postButtonClicked(_ sender: Any) {
         
+        var alertMessage:String?
+        
+        if messageTextView.text == nil || messageTextView.text == ""  {
+            alertMessage = "You didn't enter any message ! 🤔"
+        }
+        else if tagTextField.text == nil  || tagTextField.text == "" {
+            alertMessage = "Tags aren't optional ! 😈"
+        }
+        
+        if let mess = alertMessage {
+            let alertController = UIAlertController(title: "Alert !", message: mess, preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
+            return
+        }
+
         let message = CGMessage()
         message.text = messageTextView.text
         message.tag = tagTextField.text
         
         self.dismiss(animated: true, completion: nil)
         
-        APIConnector.postMessage(message, toLocation: locationToAdd) { (success) in
-            print("new mess")
+        APIConnector.postMessage(message, toLocation: locationToAdd) { [weak self] (success) in
+            if self != nil, success {
+                self?.messageAddedAction?(self!.locationToAdd, message)
+            }
         }
         
     }
-    
-    
-}
-
-//************************************
-// MARK: - Actions and Navigation
-//************************************
-
-extension NewMessageVC {
     
     func setSearchResultHidden(_ hidden:Bool, animated:Bool) {
         
@@ -229,6 +267,7 @@ extension NewMessageVC {
     
     func setupViews() {
         
+        messageTextView.delegate = self
         autocompleteView.autocompletes = []
         autocompleteView.didSelectSuggestion = { autoSuggestion in
             self.searchGooglePlaceDetail(autocomp: autoSuggestion)
@@ -253,18 +292,79 @@ extension NewMessageVC {
 extension NewMessageVC {
     
     func setupKeyboard() {
+        
+        bottomBarInitialSize = bottomBarBotConstraint.constant
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange(notification:)), name: .UIKeyboardWillChangeFrame, object: nil)
     }
     
     @objc func keyboardWillChange(notification:NSNotification) {
         
-        let frameEnd = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-
-        let convRect = self.view.convert(frameEnd!, from: nil)
-        let yOffset = self.view.bounds.size.height - convRect.origin.y
+        guard let userInfo = notification.userInfo else { return }
         
+        //let frameStart = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        let frameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let animTime = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSValue) as? Double
+        let curve = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue << 16))
+        
+        let convRect = self.view.convert(frameEnd, from: nil)
+        var yOffset = self.view.bounds.size.height - convRect.origin.y
+        
+        let show = frameEnd.height > 100
+        
+        if #available(iOS 11.0, *) {
+            let bottomInset = view.safeAreaInsets.bottom
+            if show { yOffset -= bottomInset }
+        }
+        
+        bottomBarBotConstraint.constant = yOffset + bottomBarInitialSize
         autocompleteView.tableView.contentInset.bottom = max(yOffset, 0) // -50 cause of tabBar
         messageTextView.contentInset.bottom = max(yOffset, 0)
+        
+        UIView.animate(withDuration: animTime!, delay: 0, options: curve, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: { (value: Bool) in
+            
+        })
+        
+        scrollView.contentInset.bottom = max(yOffset, 0)
+        
+        if messageTextView.isFirstResponder, show {
+
+            let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height + self.scrollView.contentInset.bottom - self.scrollView.bounds.size.height)
+            self.scrollView.setContentOffset(bottomOffset, animated: true)
+        }
+        
+        
+    }
+    
+}
+
+//************************************
+// MARK: - Search Bar delegate
+//************************************
+
+extension NewMessageVC : UITextViewDelegate{
+
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        let textH = textView.sizeThatFits(CGSize(width: textView.frame.size.width, height: CGFloat.greatestFiniteMagnitude)).height
+        textViewHeightConstraint.constant = textH
+    
+        UIView.animate(withDuration: 0.1, animations: {
+            self.view.layoutSubviews()
+            textView.frame.size.height = textH
+        }) { (ended) in
+            let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height + self.scrollView.contentInset.bottom - self.scrollView.bounds.size.height)
+            self.scrollView.setContentOffset(bottomOffset, animated: true)
+        }
+        
+        if textViewHeightConstraint.constant != textView.frame.size.height {
+            textViewDidChange(textView)
+        }
+        
+        
+        
     }
     
 }
@@ -330,6 +430,8 @@ extension NewMessageVC : UISearchBarDelegate{
     func resetSearch() {
         autocompleteView.autocompletes = []
     }
+    
+    
     
 }
 
@@ -491,9 +593,12 @@ extension NewMessageVC {
             
             if place == nil { return }
             let loc = CGLocation()
+            
+            loc.googleName = place!.name
             loc.googleAddress = place!.formattedAddress
             loc.coordinate = place!.coordinate
             loc.googlePlaceId = place!.placeID
+            
             self.locationToAdd = loc
             
         }

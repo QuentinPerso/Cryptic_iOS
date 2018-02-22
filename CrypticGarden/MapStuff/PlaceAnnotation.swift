@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class PlaceAnnotation:NSObject, MKAnnotation {
+    
     //    let title: String?
     let place:CGLocation!
     let coordinate: CLLocationCoordinate2D
@@ -19,6 +20,7 @@ class PlaceAnnotation:NSObject, MKAnnotation {
     init(place:CGLocation) {
         
         self.place = place
+        
 //        if let likedPlaces = SavedPlacesStore.shared.likedPlaces, likedPlaces.contains(place) {
 //            self.place.placeType = .liked
 //        }
@@ -28,7 +30,7 @@ class PlaceAnnotation:NSObject, MKAnnotation {
         
         self.coordinate = place.coordinate
 
-        self.title = place.googleAddress
+        self.title = place.googleName
         
         super.init()
     }

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="20o-8w-y2E">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Landing View Controller-->
+        <scene sceneID="hOO-lV-JfK">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="dTu-kR-9ex" customClass="LandingViewController" customModule="CrypticGarden" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zxq-ym-dk4"/>
+                        <viewControllerLayoutGuide type="bottom" id="CvJ-MP-EFy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cJX-uS-NPT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4rN-3D-ryW" customClass="SearchResultMapView" customModule="CrypticGarden" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="O5G-ut-ttt">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    </mapView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="O5G-ut-ttt" secondAttribute="trailing" id="fvZ-GZ-Hub"/>
+                                    <constraint firstAttribute="bottom" secondItem="O5G-ut-ttt" secondAttribute="bottom" id="gbI-EE-cde"/>
+                                    <constraint firstItem="O5G-ut-ttt" firstAttribute="top" secondItem="4rN-3D-ryW" secondAttribute="top" id="kH6-4T-MuW"/>
+                                    <constraint firstItem="O5G-ut-ttt" firstAttribute="leading" secondItem="4rN-3D-ryW" secondAttribute="leading" id="ksh-fA-dYp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="4rN-3D-ryW" secondAttribute="bottom" id="291-B9-keV"/>
+                            <constraint firstItem="4rN-3D-ryW" firstAttribute="top" secondItem="cJX-uS-NPT" secondAttribute="top" id="RiT-Cs-AMy"/>
+                            <constraint firstItem="4rN-3D-ryW" firstAttribute="leading" secondItem="cJX-uS-NPT" secondAttribute="leading" id="kYa-aZ-5sZ"/>
+                            <constraint firstAttribute="trailing" secondItem="4rN-3D-ryW" secondAttribute="trailing" id="yJu-bN-vte"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="qSQ-UB-Ltz"/>
+                    <connections>
+                        <outlet property="mapView" destination="4rN-3D-ryW" id="a8p-R6-3ww"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H8R-hq-vNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1744" y="304"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hhn-nB-m1X">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="20o-8w-y2E" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z92-AK-cHO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dTu-kR-9ex" kind="relationship" relationship="rootViewController" id="fo9-HS-mYu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dwe-F1-sI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2430" y="303"/>
+        </scene>
+    </scenes>
+</document>

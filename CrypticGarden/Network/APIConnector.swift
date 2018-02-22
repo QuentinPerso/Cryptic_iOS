@@ -17,6 +17,7 @@ class APIConnector: NSObject{
     
     static var apiBaseURL = URL(string: "https://cryptic-garden-16026.herokuapp.com/api/")
     
+    static var kGooglePlacesApi = "AIzaSyAdHCHmiKVw1_66qaq6zK4P9_IItBcu37c"
 //    static var serverConfig:MKSServerConfiguration?
 //
     static var userSession:CGUserSession?
@@ -53,6 +54,23 @@ class APIConnector: NSObject{
         let manager = Alamofire.SessionManager.default
         manager.adapter = MashapeHeadersAdapter()
         return manager
+    }
+    
+    static func dropDataBase(completion:@escaping (_ success:Bool) -> Void){
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        _ = sessionManager.request(self.absoluteURLString(path: "clear")).responseJSON { response in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if succededRequest(response: response) {
+                completion(true)
+            }
+            else{
+                completion(false)
+            }
+        }
+        
+        
     }
 
 //    static func getServerConf(completion:((MKSServerConfiguration?) -> Void)?){

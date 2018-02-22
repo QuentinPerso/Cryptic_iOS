@@ -11,17 +11,22 @@ import MapKit
 
 class SearchResultMapView: UIView {
 
-    @IBOutlet weak var mapView: MKMapView!
+    var mapView: MKMapView!
     
-    var filteredPlaces = [CGLocation]() { didSet{ setupMap() } }
+    var filteredPlaces = [CGLocation]() { didSet{ reloadMap(previousLocations: oldValue) } }
     
     var mapFirstCentered = false
     
     var clickPlaceAction:((CGLocation)->())?
-    
     var mapReadyAction:(()->())?
+    var mapStartPanAction:(()->())?
+    var mapSelectAnnotationAction:((MKAnnotationView)->())?
+    var mapDeselectAnnotationAction:((MKAnnotationView)->())?
+    var mapRegionDidChangeAction:(()->())?
     
     var pinZIndex = 0
+    
+    var skipRegionChangeDelegate = true
 
     //************************************
     // MARK: - View Methods
@@ -31,18 +36,19 @@ class SearchResultMapView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        mapView = MKMapView(frame: self.bounds)
         //trick iOS < 10 map and layout guides
-        let iOS10 = (UIDevice.current.systemVersion as NSString).floatValue >= 10
-        if !iOS10 {
-            mapView.removeFromSuperview()
-            mapView = MKMapView(frame: self.bounds)
-            addSubview(mapView)
-        }
+        
+        
+        addSubview(mapView)
+        
+        confMap()
         
         mapView.delegate = self
         
         mapView.showsUserLocation = true
-
+        
+        
     }
 
     
@@ -50,8 +56,7 @@ class SearchResultMapView: UIView {
         super.layoutSubviews()
         
         mapView.frame = self.bounds
-        
-        sendSubview(toBack: mapView)
+
     }
     
     
@@ -63,29 +68,65 @@ class SearchResultMapView: UIView {
 //************************************
 // MARK: - Map methods
 //************************************
-extension SearchResultMapView {
+extension SearchResultMapView:UIGestureRecognizerDelegate  {
     
-    func setupMap(){
+    func confMap(){
         
+        let panRec = UIPanGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
+        panRec.delegate = self
+        
+        let pinchRec = UIPinchGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
+        pinchRec.delegate = self
+        
+        mapView.addGestureRecognizer(panRec)
+        mapView.addGestureRecognizer(pinchRec)
+        
+    }
+    
+    func reloadMap(previousLocations:[CGLocation]){
+        
+        var annotsplaces = [CGLocation]()
         for annot in mapView.annotations {
-            if annot is PlaceAnnotation{
-                mapView.removeAnnotation(annot)
+            if let pAnnot = annot as? PlaceAnnotation {
+                
+                if !filteredPlaces.contains(pAnnot.place), mapView.selectedAnnotations.count > 0, let selAnnot = mapView.selectedAnnotations[0] as? PlaceAnnotation, selAnnot.place.googlePlaceId == pAnnot.place.googlePlaceId  {
+                    mapView.removeAnnotation(annot)
+                }
+                else {
+                    annotsplaces.append(pAnnot.place)
+                }
             }
         }
         
         var annots = [PlaceAnnotation]()
         for place in filteredPlaces {
-            let artwork = PlaceAnnotation(place: place)
-            annots.append(artwork)
+            if !annotsplaces.contains(place) {
+                let artwork = PlaceAnnotation(place: place)
+                annots.append(artwork)
+            }
+            
         }
         mapView.addAnnotations(annots)
-        mapView.showAnnotations(annots, animated: false)
         
         
     }
+    
+    @objc func didDragMap(_ gestureRecognizer:UIGestureRecognizer){
+        
+        if (gestureRecognizer.state == .began) {
+            
+            mapStartPanAction?()
+            
+            if gestureRecognizer.numberOfTouches <= 4 {
+                skipRegionChangeDelegate = false
+                //searchOverlay?.show()
+            }
+        }
+    }
 
-    
-    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }
 
 //************************************
@@ -105,11 +146,31 @@ extension SearchResultMapView : MKMapViewDelegate{
         
     }
     
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
+        
+        if skipRegionChangeDelegate { return }
+        
+        skipRegionChangeDelegate = true
+        
+        mapRegionDidChangeAction?()
+        
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        
+        mapDeselectAnnotationAction?(view)
+    }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         pinZIndex += 1
         
         view.layer.zPosition = CGFloat(pinZIndex)
+        
+        mapSelectAnnotationAction?(view)
         
 //        if let selAnnot = view.annotation as? PlaceAnnotation  {
 //            

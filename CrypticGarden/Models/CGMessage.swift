@@ -34,8 +34,7 @@ class CGMessage: NSObject, NSCoding {
         self.text = dictionary["text"] as? String
         self.tag = dictionary["tag"] as? String
         self.postDate = dictionary["postDate"] as? Int
-        
-        
+
         super.init()
 
     }

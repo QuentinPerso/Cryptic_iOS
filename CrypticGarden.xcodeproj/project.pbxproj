@@ -9,8 +9,20 @@
 /* Begin PBXBuildFile section */
 		08652C47DFE9D686B19117AC /* Pods_CrypticGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC0AF89DC3578A8C5FB30AC /* Pods_CrypticGarden.framework */; };
 		51C66AF9BFBA4346B69FCD7B /* Pods_CrypticGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F12ECCC938F177AC275131 /* Pods_CrypticGarden.framework */; };
+		66BFCEFE203CBAFA00B471F5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCEFD203CBAFA00B471F5 /* MessageCell.swift */; };
+		66BFCF01203CD27700B471F5 /* PrimaryTransitionTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF00203CD27700B471F5 /* PrimaryTransitionTargetViewController.swift */; };
+		66BFCF07203D321900B471F5 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF06203D321900B471F5 /* UIPlaceHolderTextView.m */; };
+		66BFCF0C203D952400B471F5 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF0B203D952400B471F5 /* GrowingTextView.swift */; };
+		66BFCF0E203EA81500B471F5 /* GoogleLocalSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF0D203EA81500B471F5 /* GoogleLocalSearch.swift */; };
+		66D8B445203C64B000A7C2A1 /* PrimaryContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B442203C64B000A7C2A1 /* PrimaryContentViewController.swift */; };
+		66D8B446203C64B000A7C2A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D8B443203C64B000A7C2A1 /* Main.storyboard */; };
+		66D8B447203C64B000A7C2A1 /* DrawerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B444203C64B000A7C2A1 /* DrawerContentViewController.swift */; };
+		66D8B44E203C66D200A7C2A1 /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B44B203C66D200A7C2A1 /* PulleyPassthroughScrollView.swift */; };
+		66D8B44F203C66D200A7C2A1 /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B44C203C66D200A7C2A1 /* PulleyViewController.swift */; };
+		66D8B450203C66D200A7C2A1 /* UIView+constrainToParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B44D203C66D200A7C2A1 /* UIView+constrainToParent.swift */; };
+		66D8B452203C72BC00A7C2A1 /* AutoCompCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B451203C72BC00A7C2A1 /* AutoCompCell.swift */; };
 		841C2346200EABFA00F5A6B4 /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2340200EABF900F5A6B4 /* AutocompleteView.swift */; };
-		841C2347200EABFA00F5A6B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841C2341200EABF900F5A6B4 /* Main.storyboard */; };
+		841C2347200EABFA00F5A6B4 /* Mainzz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841C2341200EABF900F5A6B4 /* Mainzz.storyboard */; };
 		841C2348200EABFA00F5A6B4 /* SearchResutlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2342200EABF900F5A6B4 /* SearchResutlView.swift */; };
 		841C2349200EABFA00F5A6B4 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2343200EABFA00F5A6B4 /* SearchVC.swift */; };
 		841C234A200EABFA00F5A6B4 /* TrendingSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2344200EABFA00F5A6B4 /* TrendingSearchView.swift */; };
@@ -44,8 +56,22 @@
 		08E153625EEE8B8D899A027D /* Pods-CrypticGarden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrypticGarden.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden.release.xcconfig"; sourceTree = "<group>"; };
 		1EC0AF89DC3578A8C5FB30AC /* Pods_CrypticGarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrypticGarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5719473E33FF998E694777BB /* Pods-CrypticGarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrypticGarden.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden.debug.xcconfig"; sourceTree = "<group>"; };
+		66BFCEFD203CBAFA00B471F5 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		66BFCF00203CD27700B471F5 /* PrimaryTransitionTargetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryTransitionTargetViewController.swift; sourceTree = "<group>"; };
+		66BFCF04203D321900B471F5 /* CrypticGarden-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CrypticGarden-Bridging-Header.h"; sourceTree = "<group>"; };
+		66BFCF05203D321900B471F5 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
+		66BFCF06203D321900B471F5 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
+		66BFCF0B203D952400B471F5 /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
+		66BFCF0D203EA81500B471F5 /* GoogleLocalSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLocalSearch.swift; sourceTree = "<group>"; };
+		66D8B442203C64B000A7C2A1 /* PrimaryContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryContentViewController.swift; sourceTree = "<group>"; };
+		66D8B443203C64B000A7C2A1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		66D8B444203C64B000A7C2A1 /* DrawerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentViewController.swift; sourceTree = "<group>"; };
+		66D8B44B203C66D200A7C2A1 /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyPassthroughScrollView.swift; sourceTree = "<group>"; };
+		66D8B44C203C66D200A7C2A1 /* PulleyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyViewController.swift; sourceTree = "<group>"; };
+		66D8B44D203C66D200A7C2A1 /* UIView+constrainToParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+constrainToParent.swift"; sourceTree = "<group>"; };
+		66D8B451203C72BC00A7C2A1 /* AutoCompCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompCell.swift; sourceTree = "<group>"; };
 		841C2340200EABF900F5A6B4 /* AutocompleteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
-		841C2341200EABF900F5A6B4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		841C2341200EABF900F5A6B4 /* Mainzz.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mainzz.storyboard; sourceTree = "<group>"; };
 		841C2342200EABF900F5A6B4 /* SearchResutlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResutlView.swift; sourceTree = "<group>"; };
 		841C2343200EABFA00F5A6B4 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		841C2344200EABFA00F5A6B4 /* TrendingSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingSearchView.swift; sourceTree = "<group>"; };
@@ -101,10 +127,63 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		66BFCEFF203CD22400B471F5 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				847D3C79201F30D300EC64BC /* Views */,
+				841C234D200EB02100F5A6B4 /* SearchVC */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
+		66BFCF02203D31D100B471F5 /* Pulley */ = {
+			isa = PBXGroup;
+			children = (
+				66D8B44B203C66D200A7C2A1 /* PulleyPassthroughScrollView.swift */,
+				66D8B44C203C66D200A7C2A1 /* PulleyViewController.swift */,
+				66D8B44D203C66D200A7C2A1 /* UIView+constrainToParent.swift */,
+			);
+			path = Pulley;
+			sourceTree = "<group>";
+		};
+		66BFCF03203D31E700B471F5 /* PlaceHolderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				66BFCF04203D321900B471F5 /* CrypticGarden-Bridging-Header.h */,
+				66BFCF05203D321900B471F5 /* UIPlaceHolderTextView.h */,
+				66BFCF06203D321900B471F5 /* UIPlaceHolderTextView.m */,
+			);
+			path = PlaceHolderTextView;
+			sourceTree = "<group>";
+		};
+		66D8B431203C4D8200A7C2A1 /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				66D8B443203C64B000A7C2A1 /* Main.storyboard */,
+				841C2345200EABFA00F5A6B4 /* SearchResultMapView.swift */,
+				66D8B442203C64B000A7C2A1 /* PrimaryContentViewController.swift */,
+				66D8B444203C64B000A7C2A1 /* DrawerContentViewController.swift */,
+				66BFCEFD203CBAFA00B471F5 /* MessageCell.swift */,
+				66D8B451203C72BC00A7C2A1 /* AutoCompCell.swift */,
+				66BFCF00203CD27700B471F5 /* PrimaryTransitionTargetViewController.swift */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		66D8B44A203C66C700A7C2A1 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				66BFCF0B203D952400B471F5 /* GrowingTextView.swift */,
+				66BFCF03203D31E700B471F5 /* PlaceHolderTextView */,
+				66BFCF02203D31D100B471F5 /* Pulley */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
 		841C234C200EAFFC00F5A6B4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				841C234D200EB02100F5A6B4 /* SearchVC */,
+				66D8B431203C4D8200A7C2A1 /* HomeVC */,
 				847D3C7E201F38A800EC64BC /* NewMessageVC */,
 			);
 			path = ViewControllers;
@@ -113,9 +192,8 @@
 		841C234D200EB02100F5A6B4 /* SearchVC */ = {
 			isa = PBXGroup;
 			children = (
-				841C2341200EABF900F5A6B4 /* Main.storyboard */,
+				841C2341200EABF900F5A6B4 /* Mainzz.storyboard */,
 				841C2343200EABFA00F5A6B4 /* SearchVC.swift */,
-				841C2345200EABFA00F5A6B4 /* SearchResultMapView.swift */,
 				841C2342200EABF900F5A6B4 /* SearchResutlView.swift */,
 				841C2344200EABFA00F5A6B4 /* TrendingSearchView.swift */,
 				84C0D4D72010DEE10035E9AC /* LocationTableCell.xib */,
@@ -151,6 +229,7 @@
 				847D3C7320174B2B00EC64BC /* APIConnector.swift */,
 				847D3C7120174B2B00EC64BC /* APIConnector+Connect.swift */,
 				847D3C7220174B2B00EC64BC /* APIConnector+Messages.swift */,
+				66BFCF0D203EA81500B471F5 /* GoogleLocalSearch.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -217,13 +296,13 @@
 				84D3C8AA2007A98E003B7A01 /* AppDelegate.swift */,
 				84C0D4C62010CD5E0035E9AC /* LocationManager.swift */,
 				841C234C200EAFFC00F5A6B4 /* ViewControllers */,
-				847D3C79201F30D300EC64BC /* Views */,
 				841C2353200EB3A500F5A6B4 /* Models */,
 				847D3C7020174AF600EC64BC /* Network */,
 				84C0D4CC2010D3970035E9AC /* MapStuff */,
-				A9AFD2B8EEE75C64A2CE6B0F /* Frameworks */,
+				66D8B44A203C66C700A7C2A1 /* Libs */,
 				841C234E200EB0CC00F5A6B4 /* Extensions */,
 				84D3C8BC2007AA43003B7A01 /* SupportingFiles */,
+				A9AFD2B8EEE75C64A2CE6B0F /* Frameworks */,
 			);
 			path = CrypticGarden;
 			sourceTree = "<group>";
@@ -231,6 +310,7 @@
 		84D3C8BC2007AA43003B7A01 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				66BFCEFF203CD22400B471F5 /* Old */,
 				84D3C8B32007A98F003B7A01 /* LaunchScreen.storyboard */,
 				84D3C8B62007A98F003B7A01 /* Info.plist */,
 			);
@@ -281,6 +361,7 @@
 				TargetAttributes = {
 					84D3C8A62007A98E003B7A01 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -316,10 +397,11 @@
 				84C0D4D82010DEE10035E9AC /* LocationTableCell.xib in Resources */,
 				847D3C7B201F30EE00EC64BC /* AutocompleteView.xib in Resources */,
 				84D3C8B52007A98F003B7A01 /* LaunchScreen.storyboard in Resources */,
+				66D8B446203C64B000A7C2A1 /* Main.storyboard in Resources */,
 				847D3C7D201F319E00EC64BC /* AutocompleteCell.xib in Resources */,
 				84D3C8B22007A98F003B7A01 /* Assets.xcassets in Resources */,
 				847D3C81201F38BE00EC64BC /* NewMessage.storyboard in Resources */,
-				841C2347200EABFA00F5A6B4 /* Main.storyboard in Resources */,
+				841C2347200EABFA00F5A6B4 /* Mainzz.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,21 +476,32 @@
 				841C234B200EABFA00F5A6B4 /* SearchResultMapView.swift in Sources */,
 				84C0D4C52010CCE90035E9AC /* MKSAutocompleteResult.swift in Sources */,
 				841C234A200EABFA00F5A6B4 /* TrendingSearchView.swift in Sources */,
+				66BFCF0E203EA81500B471F5 /* GoogleLocalSearch.swift in Sources */,
 				844C37E220221009003806B0 /* CGLocation.swift in Sources */,
+				66D8B44F203C66D200A7C2A1 /* PulleyViewController.swift in Sources */,
+				66BFCF07203D321900B471F5 /* UIPlaceHolderTextView.m in Sources */,
+				66D8B447203C64B000A7C2A1 /* DrawerContentViewController.swift in Sources */,
 				841C2349200EABFA00F5A6B4 /* SearchVC.swift in Sources */,
+				66D8B44E203C66D200A7C2A1 /* PulleyPassthroughScrollView.swift in Sources */,
 				841C2348200EABFA00F5A6B4 /* SearchResutlView.swift in Sources */,
 				841C2357200EB4C600F5A6B4 /* CGMessage.swift in Sources */,
+				66D8B452203C72BC00A7C2A1 /* AutoCompCell.swift in Sources */,
+				66BFCEFE203CBAFA00B471F5 /* MessageCell.swift in Sources */,
 				84C0D4CB2010D25A0035E9AC /* PlaceAnnotation.swift in Sources */,
 				847D3C7520174B2B00EC64BC /* APIConnector+Messages.swift in Sources */,
 				841C2352200EB19B00F5A6B4 /* String+Functions.swift in Sources */,
+				66D8B450203C66D200A7C2A1 /* UIView+constrainToParent.swift in Sources */,
 				841C2350200EB10800F5A6B4 /* Array+Functions.swift in Sources */,
+				66BFCF01203CD27700B471F5 /* PrimaryTransitionTargetViewController.swift in Sources */,
 				84C0D4C72010CD5E0035E9AC /* LocationManager.swift in Sources */,
 				84C0D4D62010DEA30035E9AC /* LocationTableCell.swift in Sources */,
 				847D3C7820174EFB00EC64BC /* CGUserSession.swift in Sources */,
 				84C0D4C92010D1C10035E9AC /* MapFunctions.swift in Sources */,
 				841C2346200EABFA00F5A6B4 /* AutocompleteView.swift in Sources */,
+				66BFCF0C203D952400B471F5 /* GrowingTextView.swift in Sources */,
 				84D3C8AB2007A98E003B7A01 /* AppDelegate.swift in Sources */,
 				841C2355200EB3D800F5A6B4 /* CGUser.swift in Sources */,
+				66D8B445203C64B000A7C2A1 /* PrimaryContentViewController.swift in Sources */,
 				847D3C7420174B2B00EC64BC /* APIConnector+Connect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,6 +632,7 @@
 			baseConfigurationReference = 5719473E33FF998E694777BB /* Pods-CrypticGarden.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MQK5ADKQSE;
 				INFOPLIST_FILE = "$(SRCROOT)/CrypticGarden/SupportingFiles/Info.plist";
@@ -546,6 +640,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quentin.CrypticGarden;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CrypticGarden/Libs/PlaceHolderTextView/CrypticGarden-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -556,6 +652,7 @@
 			baseConfigurationReference = 08E153625EEE8B8D899A027D /* Pods-CrypticGarden.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MQK5ADKQSE;
 				INFOPLIST_FILE = "$(SRCROOT)/CrypticGarden/SupportingFiles/Info.plist";
@@ -563,6 +660,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quentin.CrypticGarden;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CrypticGarden/Libs/PlaceHolderTextView/CrypticGarden-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

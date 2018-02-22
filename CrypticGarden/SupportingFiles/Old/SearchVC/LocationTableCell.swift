@@ -25,9 +25,6 @@ class LocationTableCell: UITableViewCell {
         self.backgroundColor = UIColor.clear
         self.backgroundView = UIView()
         
-        
-        
-        
     }
     
     
@@ -37,8 +34,7 @@ class LocationTableCell: UITableViewCell {
         UIView.animate(withDuration: 0.15) {
             self.alpha = highlighted ? 0.6 : 1
         }
-        
-        
+ 
     }
     
     

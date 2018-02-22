@@ -11,16 +11,24 @@ import CoreLocation
 
 class CGLocation: NSObject, NSCoding {
     
+    static var kGoogleId = "googlePlaceId"
+    static var kGoogleName = "googleName"
+    static var kGoogleAdress = "googleAddress"
+    static var kMessages = "messages"
+    static var kPosition = "location"
+    static var kCoordInPosition = "coordinates"
+    
     var uniqueId: String!
     var googlePlaceId: String!
     var messages: [CGMessage]?
     var lastModificationDate: Int?
     var coordinate: CLLocationCoordinate2D!
+    var googleName:String?
     var googleAddress:String?
     var mainTags:[String]?
     
     override func isEqual(_ object: Any?) -> Bool {
-        if let object = object as? CGLocation { return self.uniqueId == object.uniqueId }
+        if let object = object as? CGLocation { return self.googlePlaceId == object.googlePlaceId }
         return false
     }
     
@@ -31,14 +39,16 @@ class CGLocation: NSObject, NSCoding {
     init(dictionary:[String : AnyObject]) {
 
         self.uniqueId = dictionary["id"] as? String
-        self.googlePlaceId = dictionary["googlePlaceId"] as? String
-        self.googleAddress = dictionary["googleAddress"] as? String
+        self.googlePlaceId = dictionary[CGLocation.kGoogleId] as? String
+        self.googleAddress = dictionary[CGLocation.kGoogleAdress] as? String
+        self.googleName = dictionary[CGLocation.kGoogleName] as? String
         
-        if let messDicts = dictionary["messages"] as? [[String : AnyObject]] {
+        if let messDicts = dictionary[CGLocation.kMessages] as? [[String : AnyObject]] {
             self.messages = []
             for dict in messDicts {
                 messages?.append(CGMessage(dictionary: dict))
             }
+            messages = messages?.reversed()
         }
         
         if self.messages != nil {
@@ -51,10 +61,10 @@ class CGLocation: NSObject, NSCoding {
         
         self.lastModificationDate = dictionary["lastModificationDate"] as? Int ?? 0
         
-        if let location = dictionary["location"] as? [String : AnyObject] {
-            if let coordArray = location["coordinates"] as? [Double] {
-                let latitude = coordArray[0]
-                let longitude = coordArray[1]
+        if let location = dictionary[CGLocation.kPosition] as? [String : AnyObject] {
+            if let coordArray = location[CGLocation.kCoordInPosition] as? [Double] {
+                let latitude = coordArray[1]
+                let longitude = coordArray[0]
                 self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
             

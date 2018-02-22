@@ -25,8 +25,10 @@ extension APIConnector {
         }
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        sessionManager.request(self.absoluteURLString(path: "place/\(locationID)"), parameters: queryParams).responseJSON { response in
+        sessionManager.request(self.absoluteURLString(path: "locations/\(locationID)"), parameters: queryParams).responseJSON { response in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            print(response.result.value)
             
             if let jsonDict = response.result.value as? [String: AnyObject], jsonDict["error"] == nil{
                 
@@ -43,24 +45,6 @@ extension APIConnector {
         
     }
     
-    static func dropDataBase(completion:@escaping (_ success:Bool) -> Void){
-        
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        _ = sessionManager.request(self.absoluteURLString(path: "clear")).responseJSON { response in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            
-            if succededRequest(response: response) {
-                completion(true)
-            }
-            else{
-                completion(false)
-            }
-        }
-        
-        
-    }
-    
-    
     static func postMessage(_ message:CGMessage, toLocation location:CGLocation, completion:@escaping (_ success:Bool) -> Void){
         
         let messageDict : [String:String] = [
@@ -69,9 +53,10 @@ extension APIConnector {
         ]
         
         let locationDict : [String:AnyObject] = [
-            "googlePlaceId": location.googlePlaceId as AnyObject,
-            "location": ["type":"Point", "coordinates":[location.coordinate.latitude,location.coordinate.longitude]] as AnyObject,
-            "googleAddress":location.googleAddress as AnyObject,
+            CGLocation.kGoogleId: location.googlePlaceId as AnyObject,
+            CGLocation.kGoogleName: location.googleName as AnyObject,
+            CGLocation.kPosition: ["type":"Point", CGLocation.kCoordInPosition:[location.coordinate.longitude,location.coordinate.latitude]] as AnyObject, //Mongo takes [lng, lat]?
+            CGLocation.kGoogleAdress:location.googleAddress as AnyObject,
             ]
         
         var queryParams:[String:AnyObject] = [
@@ -112,7 +97,7 @@ extension APIConnector {
     
     
     static func getLocations(viewport:Viewport, completion:@escaping ([CGLocation]?, _ canceled:Bool) -> Void) -> Alamofire.DataRequest? {
-
+        
         var queryParams:[String:String] = [
             "limit" : "100",
             "northeast":"\(viewport.northEast.latitude),\(viewport.northEast.longitude)",
@@ -127,6 +112,8 @@ extension APIConnector {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let request = sessionManager.request(self.absoluteURLString(path: "search/locations"), parameters: queryParams).responseJSON { response in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            print(response.result.value)
             
             if let rawPlaces = response.result.value as? [[String: AnyObject]]{
                 
