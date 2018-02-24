@@ -139,10 +139,12 @@ extension SearchResultMapView : MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         
         if !mapFirstCentered {
-            mapView.centerOn(userLocation.coordinate, zoomLevel: 13.5, animated: false)
+            mapView.centerOn(coord: userLocation.coordinate, radius: MapFunctions.defaultRegionRadius, animated: true)
             mapReadyAction?()
             mapFirstCentered = true
         }
+        
+        LocationManager.shared.lastLocation = userLocation.location
         
     }
     

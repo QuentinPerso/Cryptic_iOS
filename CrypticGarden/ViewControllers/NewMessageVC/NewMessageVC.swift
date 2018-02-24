@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import Alamofire
 import GooglePlaces
+import Firebase
 
 class NewMessageVC: UIViewController {
     
@@ -29,18 +30,17 @@ class NewMessageVC: UIViewController {
     var locationToAdd:CGLocation!
     
     var messageAddedAction:((_ location:CGLocation, _ message:CGMessage)->())?
-
-//    var searchBarShouldBeginEditing = true
     
     var searchRequest:DataRequest?
     
     var autoCompleteRequest:DataRequest? //marks autocomplete
-    
-    let searchCompleter = MKLocalSearchCompleter() //apple auto complete (with delegate)
-    
-    //let placesClient =  //google autocomplete
-    
+
     var autocompleteStarted = false
+    
+    // FireBase Chat Channels
+    private var channelRefHandle: DatabaseHandle?
+    private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
+    
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
@@ -62,48 +62,6 @@ class NewMessageVC: UIViewController {
         
         setupViews()
         
-        searchCompleter.delegate = self
-
-        
-        LocationManager.shared.startUpdatingLocation(oneShot: true) { (coord, error) in
-            self.autofillSearchBar()
-            
-        }
-        
-    }
-    
-    func autofillSearchBar() {
-        
-        if locationToAdd != nil {
-            searchBar.placeholder = locationToAdd.googleName
-            return
-        }
-        
-        GMSPlacesClient().currentPlace(callback: { (placeLikelihoodList, error) -> Void in
-            if let error = error {
-                print("Pick Place error: \(error.localizedDescription)")
-                return
-            }
-            
-            if let placeLikelihoodList = placeLikelihoodList, let likelihood = placeLikelihoodList.likelihoods.first {
-                
-                
-                let place = likelihood.place
-                for comp in place.addressComponents! {
-                   print(comp.name)
-                }
-                
-                self.searchBar.placeholder = place.name
-                
-                let loc = CGLocation()
-                loc.googleAddress = place.formattedAddress
-                loc.googleName = place.name
-                loc.coordinate = place.coordinate
-                loc.googlePlaceId = place.placeID
-                self.locationToAdd = loc
-                
-            }
-        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,7 +75,8 @@ class NewMessageVC: UIViewController {
         super.viewDidLayoutSubviews()
         
         var autocompleteRect = CGRect()
-        autocompleteRect.origin.y = searchBar.frame.origin.y + searchBar.frame.size.height
+        let topPoint = searchBar.convert(searchBar.frame.origin, to: self.view)
+        autocompleteRect.origin.y = topPoint.y //+ searchBar.frame.size.height
         autocompleteRect.size.width = self.view.frame.size.width
         autocompleteRect.size.height = self.view.frame.size.height - autocompleteRect.origin.y
         autocompleteView.frame = autocompleteRect
@@ -178,9 +137,22 @@ extension NewMessageVC {
             return
         }
 
+        let tag = tagTextField.text
+        
+        //**********
+        //create Firebase entry for the message
+        let newChannelRef = channelRef.childByAutoId()
+        let channelItem = [
+            "name": tag
+        ]
+        newChannelRef.setValue(channelItem)
+        //***********
+        
         let message = CGMessage()
         message.text = messageTextView.text
-        message.tag = tagTextField.text
+        message.tag = tag
+        message.firebaseDBchannelID = newChannelRef.key
+
         
         self.dismiss(animated: true, completion: nil)
         
@@ -192,32 +164,6 @@ extension NewMessageVC {
         
     }
     
-    func setSearchResultHidden(_ hidden:Bool, animated:Bool) {
-        
-       // resultView.setHidden(hidden)
-        
-        UIView.animate(withDuration: animated ? 0.5 : 0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
-        }, completion: nil)
-    
-//        UIView.animate(withDuration: animated ? 0.2 : 0) {
-//            self.view.layoutIfNeeded()
-//        }
-        
-        
-    }
-    
-    func showPlaceDetailVC(place:CGLocation){
-        
-//        let detailVC = UIStoryboard(name: "PlaceDetails", bundle: nil).instantiateInitialViewController() as! PlaceDetailVC
-//
-//        detailVC.place = place
-//
-//
-//        self.navigationController?.show(detailVC, sender: nil)
-        
-    }
-    
-    
 }
 
 //************************************
@@ -228,57 +174,23 @@ extension NewMessageVC {
     
     func setupSearchBar(){
         
-        //searchBar.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.09019607843, blue: 0.09803921569, alpha: 1)
+        if locationToAdd != nil {
+            searchBar.text = locationToAdd.googleName
+        }
         
-        self.searchBar.delegate = self
+        searchBar.delegate = self
         
         searchBar.backgroundImage = UIImage()
-        
-        
-//        if let textField = self.searchBar.value(forKey: "searchField") as? UITextField {
-//            //Magnifying glass
-//            if let glassIconView = textField.leftView as? UIImageView {
-//                glassIconView.image = #imageLiteral(resourceName: "search")
-//                glassIconView.tintColor = UIColor.white
-//            }
-//
-//            let buttonAttribute = [NSForegroundColorAttributeName : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
-//                                   NSFontAttributeName : UIFont(name: "Montserrat-Light", size: 13)!] as [String : Any]
-//
-//            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(buttonAttribute, for: .normal)
-//
-//            textField.textColor = UIColor.white
-//            textField.tintColor = UIColor.white
-//
-//            textField.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)// #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.1508989726)
-//            textField.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.1508989726).cgColor
-//            textField.layer.cornerRadius = 2
-//            textField.clipsToBounds = true
-//
-//
-//            searchBar.setImage(#imageLiteral(resourceName: "crossSearch"), for: UISearchBarIcon.clear, state: .normal)
-//            searchBar.setImage(#imageLiteral(resourceName: "crossSearch"), for: UISearchBarIcon.clear, state: .highlighted)
-//
-//        }
-        
-        
         
     }
     
     func setupViews() {
         
         messageTextView.delegate = self
-        autocompleteView.autocompletes = []
-        autocompleteView.didSelectSuggestion = { autoSuggestion in
-            self.searchGooglePlaceDetail(autocomp: autoSuggestion)
-            
-            
-            
+        autocompleteView.autoCompletes = []
+        autocompleteView.didSelectSuggestion = { [weak self] autoSuggestion in
+            self?.searchGooglePlaceDetail(autocomp: autoSuggestion)
         }
-        
-        //setSearchResultHidden(true, animated: false)
-        //resultView.clickFadedView = { [weak self] in self?.searchBar.resignFirstResponder() }
-
         
     }
     
@@ -413,7 +325,7 @@ extension NewMessageVC : UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        commitSearch(searchString: searchBar.text)
+        searchGooglePlaceDetail(autocomp: nil)
     }
     
     
@@ -425,51 +337,17 @@ extension NewMessageVC : UISearchBarDelegate{
     
     func exitSearch() {
         //resultView.setFaded(false)
+        if locationToAdd != nil {
+            searchBar.text = locationToAdd.googleName
+        }
     }
     
     func resetSearch() {
-        autocompleteView.autocompletes = []
+        autocompleteView.autoCompletes = []
     }
     
     
     
-}
-
-//************************************
-// MARK: - MKLocal Search Completer Delegate
-//************************************
-
-extension NewMessageVC: MKLocalSearchCompleterDelegate {
-    
-    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        
-//        //TODO: do something when current city == nil
-//        var autocompletes = [MKSAutocompleteResult]()
-//        for result in completer.results {
-//
-//            var alreadyIn = false
-//            for alreadyInResutl in autocompletes {
-//                if alreadyInResutl.autoString == result.title {
-//                    alreadyIn = true
-//                    break
-//                }
-//            }
-//            if alreadyIn { continue }
-//
-//            let autoComp = MKSAutocompleteResult()
-//            autoComp.autoString = result.title + result.subtitle
-//            autoComp.type = .address
-//            autocompletes.append(autoComp)
-//        }
-        
-//        self.marksAutoComplete(string: searchCompleter.queryFragment, previousResult: autocompletes)
-        
-        
-    }
-    
-    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        // handle error
-    }
 }
 
 //************************************
@@ -490,106 +368,56 @@ extension NewMessageVC {
     }
     
     func googleAutoComplete(_ text:String) {
-
-        var autocompletes = [(name:String, value:[MKSAutocompleteResult])]()
-        
-        
-        googleAddressAndTransitComplete(text) { (addressesAutocomp) in
-            
-            if addressesAutocomp.count > 0 {
-                autocompletes.append((name : "LOOK_AROUND".localized, value: addressesAutocomp))
-            }
-            
-            self.autocompleteView.autocompletes = autocompletes
-            
-        }
-        
-        
-    }
-    
-    func googleAddressAndTransitComplete(_ text:String, completion:@escaping ([MKSAutocompleteResult])->()) {
-        
-        var addressesAutocomp = [MKSAutocompleteResult]()
+                
+        var addressesAutocomp = [GMSAutocompletePrediction]()
         let userCoord = LocationManager.shared.lastKnownCoord
         let bounds = userCoord == nil ? nil : GMSCoordinateBounds(coordinate: userCoord!, coordinate: userCoord!)
         
-        //---------- GOOGLE AUTOCOMPLETE
-    
         let filter = GMSAutocompleteFilter()
-
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        GMSPlacesClient().autocompleteQuery(text, bounds: bounds, filter: filter, callback: {(results, error) -> Void in
+        GMSPlacesClient().autocompleteQuery(text, bounds: bounds, filter: filter, callback: { [weak self] (results, error) -> Void in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if error != nil {
                 return
             }
             if let results = results {
                 for result in results {
-                    let autoComp = MKSAutocompleteResult()
-                    autoComp.autoString = result.attributedFullText.string
-                    autoComp.googlePlaceId = result.placeID
-                    autoComp.type = .address
-                    addressesAutocomp.append(autoComp)
+//                    let autoComp = MKSAutocompleteResult()
+//                    autoComp.autoString = result.attributedFullText.string
+//                    autoComp.googlePlaceId = result.placeID
+//                    autoComp.type = .address
+                    addressesAutocomp.append(result)
                     
                 }
             }
-            completion(addressesAutocomp)
+            self?.autocompleteView.autoCompletes = addressesAutocomp
             
         })
         
+        
     }
-    //ChIJAQBcJONt5kcRXzii9oCDbcQ -> minute buzz GGiD
-    //ChIJ_4-amHVu5kcRf8IrZpgcorM -> parrot GGiD
-    //ChIJYUCKonVu5kcRoUBXJc_Ic0U -> 174 quai de Jemmapes GGiD
-    
-    
-//    func googlePlacesComplete(_ text:String, completion:@escaping ([MKSAutocompleteResult])->()) {
-//
-//        var addressesAutocomp = [MKSAutocompleteResult]()
-//        guard let userCoord = LocationManager.shared.lastKnownCoord else { return }
-//        var bounds = GMSCoordinateBounds(coordinate: userCoord, coordinate: userCoord)
-//        if let cityVp = currentCity?.viewport {
-//            bounds = GMSCoordinateBounds(coordinate: cityVp.northEast, coordinate: cityVp.southWest)
-//        }
-//
-//        //---------- GOOGLE PLACES
-//
-//        let filter = GMSAutocompleteFilter()
-//        filter.type = .establishment
-//
-//        placesClient.autocompleteQuery(text, bounds: bounds, filter: filter, callback: {(results, error) -> Void in
-//
-//
-//            if let error = error {
-//                NSLog("Autocomplete error %@", error.localizedDescription)
-//                return
-//            }
-//            if let results = results {
-//                for result in results {
-//                    let autoComp = MKSAutocompleteResult()
-//                    autoComp.autoString = result.attributedFullText.string
-//                    autoComp.type = .notMKSPlace
-//                    autoComp.objectID = result.placeID
-//                    addressesAutocomp.append(autoComp)
-//
-//                }
-//            }
-//            completion(addressesAutocomp)
-//
-//        })
-//
-//    }
-    
-    
-    
-    
-    func searchGooglePlaceDetail(autocomp:MKSAutocompleteResult) {
+
+    func searchGooglePlaceDetail(autocomp:GMSAutocompletePrediction?) {
+        
+        var autocomp = autocomp
+        if autocomp == nil, autocompleteView.autoCompletes.count >= 1 {
+            autocomp = autocompleteView.autoCompletes[0]
+        }
+        
+        if autocomp == nil {
+            return
+        }
         
         searchBar.resignFirstResponder()
-        searchBar.text = autocomp.autoString
-        autocompleteView.autocompletes = []
+        searchBar.text = autocomp!.attributedPrimaryText.string
+        autocompleteView.autoCompletes = []
         
-        GMSPlacesClient().lookUpPlaceID(autocomp.googlePlaceId) { (place, error) in
+        if autocomp?.placeID == nil {
+            return
+        }
+        
+        GMSPlacesClient().lookUpPlaceID(autocomp!.placeID!) { [weak self] (place, error) in
             
             if place == nil { return }
             let loc = CGLocation()
@@ -599,48 +427,12 @@ extension NewMessageVC {
             loc.coordinate = place!.coordinate
             loc.googlePlaceId = place!.placeID
             
-            self.locationToAdd = loc
+            self?.locationToAdd = loc
             
         }
     }
     
 
-
-    
-    func commitSearch(searchString:String?, aroundCoord coord:CLLocationCoordinate2D? = nil) {
-
-        if coord != nil {
-            //resultView.mapResultView.mapView.centerOn(coord!, zoomLevel: 13, animated: false)
-        }
-        
-        searchBar.resignFirstResponder()
-        guard let searchString = searchString else { return }
-        
-        searchBar.text = searchString
-        
-//        searchRequest = APIConnector.searchPlaces(searchString: searchString, aroundCoord: coord, cityK: cityId!) { (resultPlaces, canceled) in
-//
-//            if canceled { return }
-//
-//            var places = [MKSPlace]()
-//            if resultPlaces != nil { places = resultPlaces! }
-//
-//            self.resultView.places = places
-//            self.setSearchResultHidden(false, animated: true)
-//
-//            //log analitycs
-//            let idsArray = places.map({ (place) -> String in
-//                return place.uniqueId
-//            })
-//
-//            let properties = ["search" : searchString,
-//                              "result type" : "places",
-//                              "result number" : places.count,
-//                              "ids array" : idsArray.joined(separator: ",")] as [String : Any]
-//            LogManager.appSeeSearchEvent(event: "search", properties: properties as [String : AnyObject])
-//
-//        }
-    }
     
     
 }

@@ -11,5 +11,13 @@ target 'CrypticGarden' do
 
     pod 'Alamofire'
     pod 'AlamofireImage'
+    
+    pod 'Firebase/Storage'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
+    
+    pod 'JSQMessagesViewController'
+    
+    pod 'PhoneNumberKit', '~> 2.1'
 
 end

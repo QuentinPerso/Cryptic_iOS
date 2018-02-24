@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0wQ-1D-tfC">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat View Controller-->
+        <scene sceneID="aue-uN-hDS">
+            <objects>
+                <viewController id="0wQ-1D-tfC" customClass="ChatViewController" customModule="CrypticGarden" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="blP-2u-tSl"/>
+                        <viewControllerLayoutGuide type="bottom" id="y5i-0b-URt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i3q-y0-lZ3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGm-6z-PVH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ajL-pE-pox">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7a7-sz-we1">
+                                            <rect key="frame" x="12" y="20" width="32" height="32"/>
+                                            <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                            <state key="normal" image="backButton"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="7a7-sz-we1" firstAttribute="leading" secondItem="ajL-pE-pox" secondAttribute="leading" constant="12" id="YTg-DY-N3e"/>
+                                        <constraint firstItem="7a7-sz-we1" firstAttribute="top" secondItem="ajL-pE-pox" secondAttribute="top" constant="20" id="yYw-V7-U53"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="tXW-an-qT8"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lGm-6z-PVH" firstAttribute="leading" secondItem="YPI-Fr-yzW" secondAttribute="leading" id="8AP-CP-RkN"/>
+                            <constraint firstItem="lGm-6z-PVH" firstAttribute="top" secondItem="i3q-y0-lZ3" secondAttribute="top" id="Q8L-1H-vFa"/>
+                            <constraint firstItem="lGm-6z-PVH" firstAttribute="trailing" secondItem="YPI-Fr-yzW" secondAttribute="trailing" id="byb-iQ-sz0"/>
+                            <constraint firstItem="lGm-6z-PVH" firstAttribute="top" secondItem="i3q-y0-lZ3" secondAttribute="top" id="nta-K4-vaM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YPI-Fr-yzW"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rjj-bM-Zaz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PRa-sr-3Jd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-909.375" y="302.11267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="backButton" width="32" height="32"/>
+    </resources>
+</document>

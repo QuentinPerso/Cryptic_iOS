@@ -112,7 +112,6 @@ public enum PulleyPosition: Int {
             return .closed
             
         default:
-            print("PulleyViewController: Position for string '\(positionString)' not found. Available values are: collapsed, partiallyRevealed, open, and closed. Defaulting to collapsed.")
             return .collapsed
         }
     }
@@ -967,7 +966,7 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
     public func setDrawerPosition(position: PulleyPosition, animated: Bool, completion: PulleyAnimationCompletionBlock? = nil) {
         guard supportedPositions.contains(position) else {
             
-            print("PulleyViewController: You can't set the drawer position to something not supported by the current view controller contained in the drawer. If you haven't already, you may need to implement the PulleyDrawerViewControllerDelegate.")
+            //"PulleyViewController: You can't set the drawer position to something not supported by the current view controller contained in the drawer. If you haven't already, you may need to implement the PulleyDrawerViewControllerDelegate."
             return
         }
         

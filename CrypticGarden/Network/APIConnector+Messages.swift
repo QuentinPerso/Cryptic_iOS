@@ -27,9 +27,7 @@ extension APIConnector {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         sessionManager.request(self.absoluteURLString(path: "locations/\(locationID)"), parameters: queryParams).responseJSON { response in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            
-            print(response.result.value)
-            
+
             if let jsonDict = response.result.value as? [String: AnyObject], jsonDict["error"] == nil{
                 
                 let place = CGLocation(dictionary: jsonDict)
@@ -50,6 +48,7 @@ extension APIConnector {
         let messageDict : [String:String] = [
             "text" : message.text,
             "tag": message.tag,
+            "firebaseDBchannelID": message.firebaseDBchannelID
         ]
         
         let locationDict : [String:AnyObject] = [
@@ -112,8 +111,6 @@ extension APIConnector {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let request = sessionManager.request(self.absoluteURLString(path: "search/locations"), parameters: queryParams).responseJSON { response in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            
-            print(response.result.value)
             
             if let rawPlaces = response.result.value as? [[String: AnyObject]]{
                 

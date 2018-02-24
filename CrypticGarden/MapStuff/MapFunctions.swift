@@ -21,7 +21,7 @@ extension MKMapView {
     //************************************
     
     func centerOn(location: CLLocation, radius:CLLocationDistance?, animated:Bool) {
-        
+
         if radius != nil {
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, radius!, radius!)
             self.setRegion(coordinateRegion, animated: animated)
@@ -30,20 +30,20 @@ extension MKMapView {
             self.setCenter(location.coordinate, animated: animated)
         }
     }
-    
+
     //************************************
     // MARK: - Coordinate
     //************************************
-    
+
     func centerOn(coord: CLLocationCoordinate2D, radius:CLLocationDistance?, animated:Bool) {
-        
+
         if radius != nil {
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(coord, radius!, radius!)
             self.setRegion(coordinateRegion, animated: animated)
         }
         else {
             self.setCenter(coord, animated: animated)
-        } 
+        }
     }
     
     
@@ -113,35 +113,6 @@ extension MKMapView {
     
     func getZoomLevel() -> Double {
         
-        //        let longitudeDelta = self.region.span.longitudeDelta
-        
-        //        let centerPixelX = longitudeToPixelSpaceX(longitude: centerCoordinate.longitude)
-        //        let centerPixelY = latitudeToPixelSpaceY(latitude: centerCoordinate.latitude)
-        //
-        //        // determine the scale value from the zoom level
-        //
-        //        let zoomLevel = MAX_GOOGLE_LEVELS - zoomExponent
-        //        let zoomExponent = log2(zoomScale)
-        //        let zoomScale = scaledMapWidth/Double(mapSizeInPixels.width)
-        //
-        //
-        //        // figure out the position of the top-left pixel
-        //        let topLeftPixelX = centerPixelX - Double(scaledMapWidth / 2)
-        //        let topLeftPixelY = centerPixelY - Double(scaledMapHeight / 2)
-        //
-        //        // find delta between left and right longitudes
-        //        let minLng = pixelSpaceXToLongitude(pixelX: topLeftPixelX)
-        //        let maxLng = pixelSpaceXToLongitude(pixelX: topLeftPixelX + scaledMapWidth)
-        //        let longitudeDelta = maxLng - minLng
-        //
-        //        // find delta between top and bottom latitudes
-        //        let minLat = pixelSpaceYToLatitude(pixelY: topLeftPixelY)
-        //        let maxLat = pixelSpaceYToLatitude(pixelY: topLeftPixelY + scaledMapHeight)
-        //        let latitudeDelta = -1 * (maxLat - minLat)
-        //
-        //        // create and return the lat/lng span
-        //        let span = MKCoordinateSpanMake(longitudeDelta, longitudeDelta)
-        
         let region = self.region
         
         let centerPixelX = longitudeToPixelSpaceX(longitude: region.center.longitude)
@@ -157,13 +128,6 @@ extension MKMapView {
         
         return roundZoom
         
-        //        let longitudeDelta = self.region.span.longitudeDelta
-        //        let mapWidthInPixels = self.bounds.size.width
-        //        let zoomScale:Double = longitudeDelta * MERCATOR_RADIUS * .pi / Double((180.0 * mapWidthInPixels))
-        //        var zoomer = MAX_GOOGLE_LEVELS - log2( zoomScale )
-        //        if ( zoomer < 0 ) { zoomer = 0 }
-        //        //  zoomer = round(zoomer)
-        //        return zoomer
     }
     
     
@@ -228,24 +192,24 @@ extension MKMapView {
     
     //MARK: - Public methods
     
-    func centerOn(_ centerCoordinate:CLLocationCoordinate2D, zoomLevel:Double, animated:Bool) {
-        
-        // clamp large numbers to 28
-        let zoomLevel = min(zoomLevel, 28)
-        
-        // use the zoom level to compute the region
-        let span = coordinateSpan(self, centerCoordinate: centerCoordinate, zoomLevel: zoomLevel)
-        let region = MKCoordinateRegionMake(centerCoordinate, span)
-        // set the region like normal
-        self.setRegion(region, animated: animated)
-    }
+//    func centerOn(_ centerCoordinate:CLLocationCoordinate2D, zoomLevel:Double, animated:Bool) {
+//        
+//        // clamp large numbers to 28
+//        let zoomLevel = min(zoomLevel, 28)
+//        
+//        // use the zoom level to compute the region
+//        let span = coordinateSpan(self, centerCoordinate: centerCoordinate, zoomLevel: zoomLevel)
+//        let region = MKCoordinateRegionMake(centerCoordinate, span)
+//        // set the region like normal
+//        self.setRegion(region, animated: animated)
+//    }
     
 }
 
 class MapFunctions: NSObject {
     
     static let defaultRegionRadius:CLLocationDistance = 1200
-
+    static let initialZoom = 13.5
     
     //************************************
     // MARK: - Utils

@@ -9,6 +9,7 @@
 import UIKit
 import GooglePlaces
 import Alamofire
+import Firebase
 
 
 class DrawerContentViewController: UIViewController {
@@ -33,6 +34,10 @@ class DrawerContentViewController: UIViewController {
     var isInSearchMode = false { didSet { setSearchMode() } }
     
     var messages = [CGMessage]()
+    
+    // FireBase Chat Channels
+    private var channelRefHandle: DatabaseHandle?
+    private lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
     
     // We adjust our 'header' based on the bottom safe area using this constraint
     @IBOutlet var headerSectionHeightConstraint: NSLayoutConstraint!
@@ -86,7 +91,7 @@ class DrawerContentViewController: UIViewController {
         
         if !isInSearchMode, let loc = currentLocation {
             messages = loc.messages ?? []
-            searchBar.text = loc.googleName            
+            searchBar.text = loc.googleName
         }
     }
     
@@ -115,6 +120,18 @@ class DrawerContentViewController: UIViewController {
 
 extension DrawerContentViewController {
     
+    func showMessageChatVC(_ message: CGMessage) {
+        
+        if let messageChatVC = UIStoryboard(name: "MessageChat", bundle: nil).instantiateInitialViewController() as? ChatViewController {
+            
+            messageChatVC.senderDisplayName = "senderDisplayName"
+            messageChatVC.channel = message
+            messageChatVC.channelRef = channelRef.child(message.firebaseDBchannelID)
+            
+        }
+        
+    }
+    
     @IBAction func newMessageButtonClicked(_ sender: Any) {
         
         if let newMessageNC = UIStoryboard(name: "NewMessage", bundle: nil).instantiateInitialViewController() as? UINavigationController {
@@ -128,7 +145,7 @@ extension DrawerContentViewController {
                             if let parent = self?.parent as? PulleyViewController, let mapVC = parent.primaryContentViewController as? PrimaryContentViewController {
                                 parent.setDrawerPosition(position: .collapsed, animated: true)
                                 mapVC.mapView.filteredPlaces = [location!]
-                                mapVC.mapView.mapView.centerOn(location!.coordinate, zoomLevel: 12, animated: true)
+                                mapVC.mapView.mapView.centerOn(coord: location!.coordinate, radius: MapFunctions.defaultRegionRadius, animated: true)
                                 mapVC.selectAnnotation(location: location!)
                             }
                         })
@@ -149,9 +166,15 @@ extension DrawerContentViewController {
         
     }
     
-    func showNewMessageVC() {
-        
-    }
+}
+
+//************************************
+// MARK: - Autocomplete Methods
+//************************************
+
+extension DrawerContentViewController {
+    
+    
     
     func autoCompleteSearch(_ text:String) {
         
@@ -196,7 +219,7 @@ extension DrawerContentViewController {
         GMSPlacesClient().autocompleteQuery(text, bounds: bounds, filter: filter, callback: {[weak self] (results, error) -> Void in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let error = error {
-                print("Autocomplete error ", error)
+                NSLog("GMSPlacesClient().autocompleteQuery error : %@", error.localizedDescription)
                 return
             }
             if let results = results {
@@ -247,7 +270,7 @@ extension DrawerContentViewController {
         
         GMSPlacesClient().currentPlace(callback: {[weak self] (placeLikelihoodList, error) -> Void in
             if let error = error {
-                print("Pick Place error: \(error.localizedDescription)")
+                NSLog("GMSPlacesClient().currentPlace error : %@", error.localizedDescription)
                 return
             }
             
@@ -384,7 +407,7 @@ extension DrawerContentViewController: UISearchBarDelegate {
                 if let parent = self?.parent as? PulleyViewController, let mapVC = parent.primaryContentViewController as? PrimaryContentViewController {
                     parent.setDrawerPosition(position: .collapsed, animated: true)
                     mapVC.mapView.filteredPlaces = [loc]
-                    mapVC.mapView.mapView.centerOn(loc.coordinate, zoomLevel: 12, animated: true)
+                    mapVC.mapView.mapView.centerOn(coord: loc.coordinate, radius: MapFunctions.defaultRegionRadius, animated: true)
                     mapVC.selectAnnotation(location: loc)
                     
                 }
@@ -461,20 +484,15 @@ extension DrawerContentViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if isInSearchMode {
-            if autoCompletes.count > indexPath.row {
-                let result = autoCompletes[indexPath.row]
-                commitSearch(autoComp: result)
-            }
+        if isInSearchMode, autoCompletes.count > indexPath.row {
+            let result = autoCompletes[indexPath.row]
+            commitSearch(autoComp: result)
+        }
+        else if messages.count > indexPath.row {
+            let message = messages[indexPath.row]
+            showMessageChatVC(message)
         }
         
-//        if let drawer = self.parent as? PulleyViewController {
-//            let primaryContent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrimaryTransitionTargetViewController")
-//
-//            drawer.setDrawerPosition(position: .collapsed, animated: true)
-//
-//            drawer.setPrimaryContentViewController(controller: primaryContent, animated: false)
-//        }
     }
 }
 

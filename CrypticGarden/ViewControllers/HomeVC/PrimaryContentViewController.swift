@@ -14,22 +14,21 @@ class PrimaryContentViewController: UIViewController {
 
     @IBOutlet weak var mapView: SearchResultMapView!
     @IBOutlet var controlsContainer: UIView!
-    @IBOutlet var temperatureLabel: UILabel!
     
+    @IBOutlet weak var locButton: UIButton!
     /**
      * IMPORTANT! If you have constraints that you use to 'follow' the drawer (like the temperature label in the demo)...
      * Make sure you constraint them to the bottom of the superview and NOT the superview's bottom margin. Double click the constraint, and you can change it in the dropdown in the right-side panel. If you don't, you'll have varying spacings to the drawer depending on the device.
      */
-    @IBOutlet var temperatureLabelBottomConstraint: NSLayoutConstraint!
-    
-    fileprivate let temperatureLabelBottomDistance: CGFloat = 8.0
+    @IBOutlet var locButtonBotConstraint: NSLayoutConstraint!
+    fileprivate let locButtonBotDistance: CGFloat = 8.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         controlsContainer.layer.cornerRadius = 10.0
-        temperatureLabel.layer.cornerRadius = 7.0
+        locButton.layer.cornerRadius = 10.0
         
         
         mapView.mapReadyAction = { [weak self] in self?.callAPILocations() }
@@ -42,19 +41,41 @@ class PrimaryContentViewController: UIViewController {
 
         }
         
+        
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Customize Pulley in viewWillAppear, as the view controller's viewDidLoad will run *before* Pulley's and some changes may be overwritten.
-        if let drawer = parent as? PulleyViewController
-        {
+        if let drawer = parent as? PulleyViewController {
             // Uncomment if you want to change the visual effect style to dark. Note: The rest of the sample app's UI isn't made for dark theme. This just shows you how to do it.
             // drawer.drawerBackgroundVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
             
             // We want the 'side panel' layout in landscape iPhone / iPad, so we set this to 'automatic'. The default is 'bottomDrawer' for compatibility with older Pulley versions.
             drawer.displayMode = .automatic
+        }
+    }
+    
+}
+
+//************************************
+// MARK: - Actions
+//************************************
+
+extension PrimaryContentViewController {
+    
+    @IBAction func locationButtonClicked(sender: AnyObject) {
+        
+        if let mainVC = parent as? PulleyViewController, let drawerVC = mainVC.drawerContentViewController as? DrawerContentViewController {
+            
+            if let coord = LocationManager.shared.lastKnownCoord {
+                mapView.mapView.centerOn(coord: coord, radius: MapFunctions.defaultRegionRadius, animated: true)
+                drawerVC.autofillSearchBar()
+            }
+            
+            
         }
     }
     
@@ -70,26 +91,6 @@ class PrimaryContentViewController: UIViewController {
         }
         
     }
-    
-}
-
-//************************************
-// MARK: - API Calls
-//************************************
-
-extension PrimaryContentViewController {
-    
-    func callAPILocations() {
-        
-        _ = APIConnector.getLocations(viewport: mapView.mapView.viewportVisibleAnnot(), completion: { [weak self] (locations, cancelled) in
-            
-            if locations == nil { return }
-            
-            self?.mapView.filteredPlaces = locations!
-        })
-        
-    }
-
     
     func locationSelected(_ location:CGLocation) {
         
@@ -111,6 +112,24 @@ extension PrimaryContentViewController {
         }
     }
     
+}
+
+//************************************
+// MARK: - API Calls
+//************************************
+
+extension PrimaryContentViewController {
+    
+    func callAPILocations() {
+        
+        _ = APIConnector.getLocations(viewport: mapView.mapView.viewportVisibleAnnot(), completion: { [weak self] (locations, cancelled) in
+            
+            if locations == nil { return }
+            
+            self?.mapView.filteredPlaces = locations!
+        })
+        
+    }
     
 }
 
@@ -132,15 +151,15 @@ extension PrimaryContentViewController: PulleyPrimaryContentControllerDelegate {
     func drawerChangedDistanceFromBottom(drawer: PulleyViewController, distance: CGFloat, bottomSafeArea: CGFloat) {
         guard drawer.currentDisplayMode == .bottomDrawer else {
             
-            temperatureLabelBottomConstraint.constant = temperatureLabelBottomDistance
+            locButtonBotConstraint.constant = locButtonBotDistance
             return
         }
         
         if distance <= 268.0 + bottomSafeArea {
-            temperatureLabelBottomConstraint.constant = distance + temperatureLabelBottomDistance
+            locButtonBotConstraint.constant = distance + locButtonBotDistance
         }
         else {
-            temperatureLabelBottomConstraint.constant = 268.0 + temperatureLabelBottomDistance
+            locButtonBotConstraint.constant = 268.0 + locButtonBotDistance
         }
     }
 }
@@ -151,21 +170,9 @@ extension PrimaryContentViewController: PulleyPrimaryContentControllerDelegate {
 
 extension PrimaryContentViewController {
     
-    @IBAction func runPrimaryContentTransitionWithoutAnimation(sender: AnyObject) {
-        
-        let primaryContent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrimaryTransitionTargetViewController")
-        present(primaryContent, animated: true, completion: nil)
-        
-//        if let drawer = self.parent as? PulleyViewController {
-//            let primaryContent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrimaryTransitionTargetViewController")
-//
-//            drawer.setPrimaryContentViewController(controller: primaryContent, animated: false)
-//        }
-    }
-    
     @IBAction func runPrimaryContentTransition(sender: AnyObject) {
         
-        
+//        startVerification()
         let primaryContent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrimaryTransitionTargetViewController")
         present(primaryContent, animated: true, completion: nil)
         

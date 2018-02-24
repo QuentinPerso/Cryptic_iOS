@@ -15,6 +15,7 @@ class CGMessage: NSObject, NSCoding {
     var ownerId:String!
     var text: String!
     var tag: String!
+    var firebaseDBchannelID:String!
     var postDate: Int?
 
     
@@ -30,6 +31,7 @@ class CGMessage: NSObject, NSCoding {
     init(dictionary:[String : AnyObject]) {
 
         self.uniqueId = dictionary["id"] as? String
+        self.firebaseDBchannelID = dictionary["firebaseDBchannelID"] as? String
         self.ownerId = dictionary["ownerId"] as? String
         self.text = dictionary["text"] as? String
         self.tag = dictionary["tag"] as? String

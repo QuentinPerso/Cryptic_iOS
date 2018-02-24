@@ -7,10 +7,9 @@
 //
 
 import UIKit
-
 import GooglePlaces
-
 import Alamofire
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         GMSPlacesClient.provideAPIKey(APIConnector.kGooglePlacesApi)
-
+        FirebaseApp.configure()
+        
         return true
         
     }
