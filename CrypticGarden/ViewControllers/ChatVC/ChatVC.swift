@@ -13,13 +13,14 @@ import JSQMessagesViewController
 
 final class ChatViewController: JSQMessagesViewController {
     
+//    @IBOutlet weak var headerTitle: UILabel!
     // MARK: Properties
     private let imageURLNotSetKey = "NOTSET"
     
     var channelRef: DatabaseReference?
     
     private lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
-    fileprivate lazy var storageRef: StorageReference = Storage.storage().reference(forURL: "gs://chatchat-rw-cf107.appspot.com")
+    fileprivate lazy var storageRef: StorageReference = Storage.storage().reference(forURL: "gs://cryptic-garden-1516285311281.appspot.com")
     private lazy var userIsTypingRef: DatabaseReference = self.channelRef!.child("typingIndicator").child(self.senderId)
     private lazy var usersTypingQuery: DatabaseQuery = self.channelRef!.child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
     
@@ -34,6 +35,7 @@ final class ChatViewController: JSQMessagesViewController {
     var channel: CGMessage? {
         didSet {
             title = channel?.tag
+           // headerTitle.text = channel?.text
         }
     }
     
@@ -139,19 +141,22 @@ final class ChatViewController: JSQMessagesViewController {
         
         // We can use the observe method to listen for new
         // messages being written to the Firebase DB
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             let messageData = snapshot.value as! Dictionary<String, String>
             
             if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.count > 0 {
                 self.addMessage(withId: id, name: name, text: text)
                 self.finishReceivingMessage()
-            } else if let id = messageData["senderId"] as String!, let photoURL = messageData["photoURL"] as String! {
+            }
+            else if let id = messageData["senderId"] as String!, let photoURL = messageData["photoURL"] as String! {
                 if let mediaItem = JSQPhotoMediaItem(maskAsOutgoing: id == self.senderId) {
-                    self.addPhotoMessage(withId: id, key: snapshot.key, mediaItem: mediaItem)
                     
-                    if photoURL.hasPrefix("gs://") {
-                        self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: nil)
-                    }
+                    self.addPhotoMessage(withId: id, key: snapshot.key, mediaItem: mediaItem)
+                    self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: nil)
+                    
+                    
                 }
             } else {
                 print("Error! Could not decode message data")
@@ -176,8 +181,14 @@ final class ChatViewController: JSQMessagesViewController {
     }
     
     private func fetchImageDataAtURL(_ photoURL: String, forMediaItem mediaItem: JSQPhotoMediaItem, clearsPhotoMessageMapOnSuccessForKey key: String?) {
+        
+        if !photoURL.hasPrefix("gs://"), !photoURL.hasPrefix("http://"), !photoURL.hasPrefix("https://") {
+            return
+        }
+        
         let storageRef = Storage.storage().reference(forURL: photoURL)
         storageRef.getData(maxSize: INT64_MAX){ (data, error) in
+
             if let error = error {
                 print("Error downloading image data: \(error)")
                 return
@@ -188,7 +199,7 @@ final class ChatViewController: JSQMessagesViewController {
                     print("Error downloading metadata: \(error)")
                     return
                 }
-                
+
                 if (metadata?.contentType == "image/gif") {
                     mediaItem.image = UIImage.gifWithData(data!)
                 } else {
@@ -281,11 +292,11 @@ final class ChatViewController: JSQMessagesViewController {
     override func didPressAccessoryButton(_ sender: UIButton) {
         let picker = UIImagePickerController()
         picker.delegate = self
-        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
-            picker.sourceType = UIImagePickerControllerSourceType.camera
-        } else {
+//        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
+//            picker.sourceType = UIImagePickerControllerSourceType.camera
+//        } else {
             picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        }
+//        }
         
         present(picker, animated: true, completion:nil)
     }
@@ -326,32 +337,33 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         picker.dismiss(animated: true, completion:nil)
         
-        // 1
-        if let photoReferenceUrl = info[UIImagePickerControllerReferenceURL] as? URL {
-            // Handle picking a Photo from the Photo Library
-            // 2
-            let assets = PHAsset.fetchAssets(withALAssetURLs: [photoReferenceUrl], options: nil)
-            let asset = assets.firstObject
+        let stRef = Storage.storage().reference()
+        
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        
+        print("************************")
+        
+        if let photo = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            var data = NSData()
+            data = UIImageJPEGRepresentation(photo, 0.25)! as NSData
             
-            // 3
             if let key = sendPhotoMessage() {
-                // 4
-                asset?.requestContentEditingInput(with: nil, completionHandler: { (contentEditingInput, info) in
-                    let imageFileURL = contentEditingInput?.fullSizeImageURL
-                    
-                    // 5
-                    let path = "\(Auth.auth().currentUser?.uid)/\(Int(Date.timeIntervalSinceReferenceDate * 1000))/\(photoReferenceUrl.lastPathComponent)"
-                    
-                    // 6
-                    self.storageRef.child(path).putFile(from: imageFileURL!, metadata: nil) { (metadata, error) in
-                        if let error = error {
-                            print("Error uploading photo: \(error.localizedDescription)")
-                            return
-                        }
-                        // 7
-                        self.setImageURL(self.storageRef.child((metadata?.path)!).description, forPhotoMessageWithKey: key)
+                print(key)
+                guard let accessT = Auth.auth().currentUser?.uid else { return }
+                let path = "\(accessT)/\(Int(Date.timeIntervalSinceReferenceDate * 1000)))"
+                
+                stRef.child(path).putData(data as Data, metadata: metaData){ (metaData,error) in
+                    if error != nil {
+                        print("error put data photo :", error!)
+                        return
                     }
-                })
+                    else {
+                        let downloadURL = metaData!.downloadURL()!.absoluteString
+                        self.setImageURL(downloadURL, forPhotoMessageWithKey: key)
+                        
+                    }
+                }
             }
         } else {
             // Handle picking a Photo from the Camera - TODO

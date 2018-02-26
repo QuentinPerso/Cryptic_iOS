@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cxY-AH-E4w">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User ProfileVC-->
+        <scene sceneID="rC6-aE-yeD">
+            <objects>
+                <viewController id="cxY-AH-E4w" customClass="UserProfileVC" customModule="CrypticGarden" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GtQ-yD-cjm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCA-wg-qrc">
+                                <rect key="frame" x="20" y="481" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.72181919640000003" green="0.0" blue="0.0" alpha="0.69985145250000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7fZ-xV-Xe2"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Clear DB">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearDBClicked:" destination="cxY-AH-E4w" eventType="touchUpInside" id="1Be-Kw-Q9E"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSb-GM-xoG">
+                                <rect key="frame" x="20" y="523" width="335" height="114"/>
+                                <color key="backgroundColor" red="0.0" green="0.77207031250000002" blue="0.0" alpha="0.69985145250000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="8FM-tf-laf"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Go Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBackButtonPressedWithSender:" destination="cxY-AH-E4w" eventType="touchUpInside" id="Buf-O2-FIl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pcj-nG-ELC">
+                                <rect key="frame" x="20" y="439" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.69985145250000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HS5-I9-OYq"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Connect">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectButtonClicked:" destination="cxY-AH-E4w" eventType="touchUpInside" id="e5f-9i-KpG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JCA-wg-qrc" firstAttribute="leading" secondItem="lxe-wc-Z2x" secondAttribute="leading" constant="20" id="5Oc-xU-2E0"/>
+                            <constraint firstItem="Pcj-nG-ELC" firstAttribute="leading" secondItem="lxe-wc-Z2x" secondAttribute="leading" constant="20" id="9yU-df-M4g"/>
+                            <constraint firstItem="lxe-wc-Z2x" firstAttribute="trailing" secondItem="JCA-wg-qrc" secondAttribute="trailing" constant="20" id="B66-EW-02O"/>
+                            <constraint firstItem="lxe-wc-Z2x" firstAttribute="bottom" secondItem="GSb-GM-xoG" secondAttribute="bottom" constant="30" id="DDM-qK-2mg"/>
+                            <constraint firstItem="lxe-wc-Z2x" firstAttribute="trailing" secondItem="GSb-GM-xoG" secondAttribute="trailing" constant="20" id="Jui-EO-HLk"/>
+                            <constraint firstItem="GSb-GM-xoG" firstAttribute="top" secondItem="JCA-wg-qrc" secondAttribute="bottom" constant="12" id="Kmv-27-set"/>
+                            <constraint firstItem="lxe-wc-Z2x" firstAttribute="trailing" secondItem="Pcj-nG-ELC" secondAttribute="trailing" constant="20" id="Rc8-kv-O4Z"/>
+                            <constraint firstItem="JCA-wg-qrc" firstAttribute="top" secondItem="Pcj-nG-ELC" secondAttribute="bottom" constant="12" id="Ww8-R6-7CR"/>
+                            <constraint firstItem="GSb-GM-xoG" firstAttribute="leading" secondItem="lxe-wc-Z2x" secondAttribute="leading" constant="20" id="sdK-39-JyL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lxe-wc-Z2x"/>
+                    </view>
+                    <connections>
+                        <outlet property="connectButton" destination="Pcj-nG-ELC" id="P9s-Hv-sbj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tt9-jM-w71" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734" y="116"/>
+        </scene>
+    </scenes>
+</document>

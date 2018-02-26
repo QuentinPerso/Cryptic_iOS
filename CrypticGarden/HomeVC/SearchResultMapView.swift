@@ -143,6 +143,8 @@ extension SearchResultMapView : MKMapViewDelegate{
             mapReadyAction?()
             mapFirstCentered = true
         }
+        let userLocationView = mapView.view(for: userLocation)
+        userLocationView?.canShowCallout = false
         
         LocationManager.shared.lastLocation = userLocation.location
         

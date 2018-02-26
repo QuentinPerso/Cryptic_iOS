@@ -15,7 +15,7 @@ extension UIViewController: PhoneVerificationDelegate {
         let configuration = Configuration(headerBackground: nil, requestCode: { phoneNumber, completion in
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
                 if let error = error {
-                   print(error.localizedDescription)
+                   print(error)
                     return
                 }
                 completion(verificationID, nil)
@@ -38,12 +38,10 @@ extension UIViewController: PhoneVerificationDelegate {
     }
     
     public func cancelled(controller: PhoneVerificationController) {
-        print("Cancelled verification")
         controller.dismiss(animated: true)
     }
     
     public func verified(phoneNumber: String, controller: PhoneVerificationController) {
-        print("Verified phone \(phoneNumber)")
         controller.dismiss(animated: true)
     }
 

@@ -7,12 +7,32 @@
 //
 
 import UIKit
+import Firebase
 
-class PrimaryTransitionTargetViewController: UIViewController {
+class UserProfileVC: UIViewController {
 
+    @IBOutlet weak var connectButton: UIButton!
     
-    @IBOutlet weak var textView: GrowingTextView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let bTitle = (Auth.auth().currentUser?.uid == nil) ? "Connect" : "Disconnect"
+        connectButton.setTitle(bTitle, for: .normal)
+    }
+    
+    @IBAction func connectButtonClicked(_ sender: UIButton) {
+        
+        if Auth.auth().currentUser?.uid != nil {
+            try! Auth.auth().signOut()
+            connectButton.setTitle("Connect", for: .normal)
+        }
+        else {
+            startVerification()
+        }
+        
+        
+    }
     
     @IBAction func goBackButtonPressed(sender: AnyObject) {
         

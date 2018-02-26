@@ -15,9 +15,6 @@ extension APIConnector {
     
     static func googleLocalSearch(center:CLLocationCoordinate2D, completion:@escaping (CGLocation?) -> Void){
         
-        
-        //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=48.837991483632585%2C2.3484099235473908&key=AIzaSyAdHCHmiKVw1_66qaq6zK4P9_IItBcu37c&rankby=distance
-        
         var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
         
         

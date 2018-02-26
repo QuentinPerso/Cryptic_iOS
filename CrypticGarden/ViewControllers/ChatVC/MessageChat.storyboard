@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chat View Controller-->
+        <!--Chat ContainerVC-->
         <scene sceneID="aue-uN-hDS">
             <objects>
-                <viewController id="0wQ-1D-tfC" customClass="ChatViewController" customModule="CrypticGarden" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0wQ-1D-tfC" customClass="ChatContainerVC" customModule="CrypticGarden" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="blP-2u-tSl"/>
                         <viewControllerLayoutGuide type="bottom" id="y5i-0b-URt"/>
@@ -28,14 +28,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7a7-sz-we1">
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="247" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7a7-sz-we1">
                                             <rect key="frame" x="12" y="20" width="32" height="32"/>
                                             <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                             <state key="normal" image="backButton"/>
+                                            <connections>
+                                                <action selector="backButtonClicked:" destination="0wQ-1D-tfC" eventType="touchUpInside" id="TTK-uC-bLQ"/>
+                                            </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="246" verticalHuggingPriority="251" text="This is a darn long message This is a darn long message " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcu-zq-hmS">
+                                            <rect key="frame" x="56" y="15.5" width="208" height="41"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Zcu-zq-hmS" firstAttribute="leading" secondItem="7a7-sz-we1" secondAttribute="trailing" constant="12" id="3ae-IO-M0Q"/>
+                                        <constraint firstItem="Zcu-zq-hmS" firstAttribute="centerY" secondItem="7a7-sz-we1" secondAttribute="centerY" id="R8f-1T-ra9"/>
                                         <constraint firstItem="7a7-sz-we1" firstAttribute="leading" secondItem="ajL-pE-pox" secondAttribute="leading" constant="12" id="YTg-DY-N3e"/>
+                                        <constraint firstItem="Zcu-zq-hmS" firstAttribute="centerX" secondItem="ajL-pE-pox" secondAttribute="centerX" id="cgB-Kr-Ro5"/>
                                         <constraint firstItem="7a7-sz-we1" firstAttribute="top" secondItem="ajL-pE-pox" secondAttribute="top" constant="20" id="yYw-V7-U53"/>
                                     </constraints>
                                 </view>
@@ -44,21 +56,48 @@
                                 </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gl6-le-oeV">
+                                <rect key="frame" x="0.0" y="71" width="320" height="497"/>
+                                <connections>
+                                    <segue destination="bnJ-ey-lAk" kind="embed" identifier="embedChatVC" id="nsQ-Nh-hxa"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Gl6-le-oeV" firstAttribute="leading" secondItem="YPI-Fr-yzW" secondAttribute="leading" id="10G-qZ-39n"/>
                             <constraint firstItem="lGm-6z-PVH" firstAttribute="leading" secondItem="YPI-Fr-yzW" secondAttribute="leading" id="8AP-CP-RkN"/>
                             <constraint firstItem="lGm-6z-PVH" firstAttribute="top" secondItem="i3q-y0-lZ3" secondAttribute="top" id="Q8L-1H-vFa"/>
                             <constraint firstItem="lGm-6z-PVH" firstAttribute="trailing" secondItem="YPI-Fr-yzW" secondAttribute="trailing" id="byb-iQ-sz0"/>
+                            <constraint firstAttribute="trailing" secondItem="Gl6-le-oeV" secondAttribute="trailing" id="laZ-18-LCH"/>
                             <constraint firstItem="lGm-6z-PVH" firstAttribute="top" secondItem="i3q-y0-lZ3" secondAttribute="top" id="nta-K4-vaM"/>
+                            <constraint firstItem="Gl6-le-oeV" firstAttribute="top" secondItem="lGm-6z-PVH" secondAttribute="bottom" id="rNY-HT-hJO"/>
+                            <constraint firstItem="y5i-0b-URt" firstAttribute="top" secondItem="Gl6-le-oeV" secondAttribute="bottom" id="vev-Xy-ZfC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YPI-Fr-yzW"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rjj-bM-Zaz"/>
+                    <connections>
+                        <outlet property="headerTitle" destination="Zcu-zq-hmS" id="aCi-H8-yyM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRa-sr-3Jd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909.375" y="302.11267605633805"/>
+            <point key="canvasLocation" x="-1378" y="208"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="a7I-Yc-ZNc">
+            <objects>
+                <viewController id="bnJ-ey-lAk" customClass="ChatViewController" customModule="CrypticGarden" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="poQ-1x-Szh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="497"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nja-33-8Cw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-662" y="208"/>
         </scene>
     </scenes>
     <resources>

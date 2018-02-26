@@ -12,7 +12,7 @@ import Alamofire
 import Firebase
 
 
-class DrawerContentViewController: UIViewController {
+class DrawerContentVC: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
@@ -118,16 +118,17 @@ class DrawerContentViewController: UIViewController {
 // MARK: - Navigation
 //************************************
 
-extension DrawerContentViewController {
+extension DrawerContentVC {
     
     func showMessageChatVC(_ message: CGMessage) {
         
-        if let messageChatVC = UIStoryboard(name: "MessageChat", bundle: nil).instantiateInitialViewController() as? ChatViewController {
-            
+
+        if let messageChatVC = UIStoryboard(name: "MessageChat", bundle: nil).instantiateInitialViewController() as? ChatContainerVC {
             messageChatVC.senderDisplayName = "senderDisplayName"
             messageChatVC.channel = message
             messageChatVC.channelRef = channelRef.child(message.firebaseDBchannelID)
             
+            self.navigationController?.pushViewController(messageChatVC, animated: true)
         }
         
     }
@@ -142,7 +143,7 @@ extension DrawerContentViewController {
                     if locationAdded != self?.currentLocation {
                         APIConnector.getLocation(locationID: locationAdded.googlePlaceId, completion: { [weak self] (location) in
                             if location == nil { return }
-                            if let parent = self?.parent as? PulleyViewController, let mapVC = parent.primaryContentViewController as? PrimaryContentViewController {
+                            if let parent = self?.parent as? PulleyViewController, let mapVC = parent.primaryContentViewController as? MapContentVC {
                                 parent.setDrawerPosition(position: .collapsed, animated: true)
                                 mapVC.mapView.filteredPlaces = [location!]
                                 mapVC.mapView.mapView.centerOn(coord: location!.coordinate, radius: MapFunctions.defaultRegionRadius, animated: true)
@@ -172,7 +173,7 @@ extension DrawerContentViewController {
 // MARK: - Autocomplete Methods
 //************************************
 
-extension DrawerContentViewController {
+extension DrawerContentVC {
     
     
     
@@ -252,12 +253,12 @@ extension DrawerContentViewController {
 // MARK: - Google places
 //************************************
 
-extension DrawerContentViewController {
+extension DrawerContentVC {
     
     
     func getMapCenterCoordinate() -> CLLocationCoordinate2D {
         
-        if let parent = self.parent as? PulleyViewController, let mapVC = parent.primaryContentViewController as? PrimaryContentViewController {
+        if let parent = self.parent as? PulleyViewController, let mapVC = parent.primaryContentViewController as? MapContentVC {
             parent.setDrawerPosition(position: .collapsed, animated: true)
             return mapVC.mapView.mapView.centerCoordinate
             
@@ -286,7 +287,7 @@ extension DrawerContentViewController {
                 
                 APIConnector.getLocation(locationID: place.placeID, completion: { [weak self] (location) in
                     if location == nil { return }
-                    if let parent = self?.parent as? PulleyViewController, let mapVC = parent.primaryContentViewController as? PrimaryContentViewController {
+                    if let parent = self?.parent as? PulleyViewController, let mapVC = parent.primaryContentViewController as? MapContentVC {
                         mapVC.selectAnnotation(location: location!)
                     }
                 })
@@ -305,7 +306,7 @@ extension DrawerContentViewController {
 // MARK: - SearchBar
 //************************************
 
-extension DrawerContentViewController: UISearchBarDelegate {
+extension DrawerContentVC: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         
@@ -404,7 +405,7 @@ extension DrawerContentViewController: UISearchBarDelegate {
                     loc = location!
                 }
                 self?.currentLocation = loc
-                if let parent = self?.parent as? PulleyViewController, let mapVC = parent.primaryContentViewController as? PrimaryContentViewController {
+                if let parent = self?.parent as? PulleyViewController, let mapVC = parent.primaryContentViewController as? MapContentVC {
                     parent.setDrawerPosition(position: .collapsed, animated: true)
                     mapVC.mapView.filteredPlaces = [loc]
                     mapVC.mapView.mapView.centerOn(coord: loc.coordinate, radius: MapFunctions.defaultRegionRadius, animated: true)
@@ -427,7 +428,7 @@ extension DrawerContentViewController: UISearchBarDelegate {
 // MARK: - TableView DataSource
 //************************************
 
-extension DrawerContentViewController: UITableViewDataSource {
+extension DrawerContentVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isInSearchMode ? autoCompletes.count : messages.count
@@ -474,7 +475,7 @@ extension DrawerContentViewController: UITableViewDataSource {
 // MARK: - TableView Delegate
 //************************************
 
-extension DrawerContentViewController: UITableViewDelegate {
+extension DrawerContentVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return isInSearchMode ? 81.0 : 160
@@ -500,7 +501,7 @@ extension DrawerContentViewController: UITableViewDelegate {
 // MARK: - Pulley Drawer ViewController Delegate
 //************************************
 
-extension DrawerContentViewController: PulleyDrawerViewControllerDelegate {
+extension DrawerContentVC: PulleyDrawerViewControllerDelegate {
 
     func collapsedDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
         // For devices with a bottom safe area, we want to make our drawer taller. Your implementation may not want to do that. In that case, disregard the bottomSafeArea value.

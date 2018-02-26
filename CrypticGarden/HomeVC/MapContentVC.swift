@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class PrimaryContentViewController: UIViewController {
+class MapContentVC: UIViewController {
     
 
     @IBOutlet weak var mapView: SearchResultMapView!
@@ -64,11 +64,11 @@ class PrimaryContentViewController: UIViewController {
 // MARK: - Actions
 //************************************
 
-extension PrimaryContentViewController {
+extension MapContentVC {
     
     @IBAction func locationButtonClicked(sender: AnyObject) {
         
-        if let mainVC = parent as? PulleyViewController, let drawerVC = mainVC.drawerContentViewController as? DrawerContentViewController {
+        if let mainVC = parent as? PulleyViewController, let drawerVC = mainVC.drawerContentViewController as? DrawerContentVC {
             
             if let coord = LocationManager.shared.lastKnownCoord {
                 mapView.mapView.centerOn(coord: coord, radius: MapFunctions.defaultRegionRadius, animated: true)
@@ -77,6 +77,20 @@ extension PrimaryContentViewController {
             
             
         }
+    }
+    
+    @IBAction func profileButtonClicked(sender: AnyObject) {
+        
+        //        startVerification()
+        if let userVC = UIStoryboard(name: "UserProfile", bundle: nil).instantiateInitialViewController() {
+            present(userVC, animated: true, completion: nil)
+        }
+        
+        
+        //        if let drawer = self.parent as? PulleyViewController,  let userVC = UIStoryboard(name: "UserProfile", bundle: nil).instantiateInitialViewController() {
+        //
+        //            drawer.setPrimaryContentViewController(controller: userVC, animated: true)
+        //        }
     }
     
     func selectAnnotation(location:CGLocation) {
@@ -96,7 +110,7 @@ extension PrimaryContentViewController {
         
         if let mainVC = parent as? PulleyViewController {
             mainVC.setDrawerPosition(position: .partiallyRevealed, animated: true)
-            if let drawerVC = mainVC.drawerContentViewController as? DrawerContentViewController {
+            if let drawerVC = mainVC.drawerContentViewController as? DrawerContentVC {
                 drawerVC.currentLocation = location
             }
         }
@@ -106,7 +120,7 @@ extension PrimaryContentViewController {
         
         if let mainVC = parent as? PulleyViewController {
             mainVC.setDrawerPosition(position: .collapsed, animated: true)
-            if let drawerVC = mainVC.drawerContentViewController as? DrawerContentViewController {
+            if let drawerVC = mainVC.drawerContentViewController as? DrawerContentVC {
                 drawerVC.currentLocation = nil
             }
         }
@@ -118,7 +132,7 @@ extension PrimaryContentViewController {
 // MARK: - API Calls
 //************************************
 
-extension PrimaryContentViewController {
+extension MapContentVC {
     
     func callAPILocations() {
         
@@ -137,7 +151,7 @@ extension PrimaryContentViewController {
 // MARK: - Drawer Delegate
 //************************************
 
-extension PrimaryContentViewController: PulleyPrimaryContentControllerDelegate {
+extension MapContentVC: PulleyPrimaryContentControllerDelegate {
     
     func makeUIAdjustmentsForFullscreen(progress: CGFloat, bottomSafeArea: CGFloat) {
         guard let drawer = parent as? PulleyViewController, drawer.currentDisplayMode == .bottomDrawer else {
@@ -168,19 +182,14 @@ extension PrimaryContentViewController: PulleyPrimaryContentControllerDelegate {
 // MARK: - Drawer Navigation
 //************************************
 
-extension PrimaryContentViewController {
+extension MapContentVC {
     
     @IBAction func runPrimaryContentTransition(sender: AnyObject) {
-        
-//        startVerification()
-        let primaryContent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrimaryTransitionTargetViewController")
-        present(primaryContent, animated: true, completion: nil)
-        
-//        if let drawer = self.parent as? PulleyViewController {
-//            let primaryContent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PrimaryTransitionTargetViewController")
-//
-//            drawer.setPrimaryContentViewController(controller: primaryContent, animated: true)
-//        }
+
+        if let drawer = self.parent as? PulleyViewController,  let userVC = UIStoryboard(name: "UserProfile", bundle: nil).instantiateInitialViewController() {
+
+            drawer.setPrimaryContentViewController(controller: userVC, animated: true)
+        }
     }
 }
 

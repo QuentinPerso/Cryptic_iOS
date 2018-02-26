@@ -10,7 +10,7 @@
 		08652C47DFE9D686B19117AC /* Pods_CrypticGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC0AF89DC3578A8C5FB30AC /* Pods_CrypticGarden.framework */; };
 		51C66AF9BFBA4346B69FCD7B /* Pods_CrypticGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F12ECCC938F177AC275131 /* Pods_CrypticGarden.framework */; };
 		66BFCEFE203CBAFA00B471F5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCEFD203CBAFA00B471F5 /* MessageCell.swift */; };
-		66BFCF01203CD27700B471F5 /* PrimaryTransitionTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF00203CD27700B471F5 /* PrimaryTransitionTargetViewController.swift */; };
+		66BFCF01203CD27700B471F5 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF00203CD27700B471F5 /* UserProfileVC.swift */; };
 		66BFCF07203D321900B471F5 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF06203D321900B471F5 /* UIPlaceHolderTextView.m */; };
 		66BFCF0C203D952400B471F5 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF0B203D952400B471F5 /* GrowingTextView.swift */; };
 		66BFCF0E203EA81500B471F5 /* GoogleLocalSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF0D203EA81500B471F5 /* GoogleLocalSearch.swift */; };
@@ -28,9 +28,11 @@
 		66BFCF2F2041D98800B471F5 /* MessageChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66BFCF2D2041D98700B471F5 /* MessageChat.storyboard */; };
 		66BFCF322041D9B200B471F5 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF312041D9B200B471F5 /* ChatVC.swift */; };
 		66BFCF342041DB7800B471F5 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF332041DB7700B471F5 /* UIImage+Gif.swift */; };
-		66D8B445203C64B000A7C2A1 /* PrimaryContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B442203C64B000A7C2A1 /* PrimaryContentViewController.swift */; };
+		66BFCF362042AC7300B471F5 /* ChatContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF352042AC7300B471F5 /* ChatContainerVC.swift */; };
+		66BFCF39204409EE00B471F5 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66BFCF38204409EE00B471F5 /* UserProfile.storyboard */; };
+		66D8B445203C64B000A7C2A1 /* MapContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B442203C64B000A7C2A1 /* MapContentVC.swift */; };
 		66D8B446203C64B000A7C2A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D8B443203C64B000A7C2A1 /* Main.storyboard */; };
-		66D8B447203C64B000A7C2A1 /* DrawerContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B444203C64B000A7C2A1 /* DrawerContentViewController.swift */; };
+		66D8B447203C64B000A7C2A1 /* DrawerContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B444203C64B000A7C2A1 /* DrawerContentVC.swift */; };
 		66D8B44E203C66D200A7C2A1 /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B44B203C66D200A7C2A1 /* PulleyPassthroughScrollView.swift */; };
 		66D8B44F203C66D200A7C2A1 /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B44C203C66D200A7C2A1 /* PulleyViewController.swift */; };
 		66D8B450203C66D200A7C2A1 /* UIView+constrainToParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B44D203C66D200A7C2A1 /* UIView+constrainToParent.swift */; };
@@ -65,7 +67,7 @@
 		1EC0AF89DC3578A8C5FB30AC /* Pods_CrypticGarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrypticGarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5719473E33FF998E694777BB /* Pods-CrypticGarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrypticGarden.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden.debug.xcconfig"; sourceTree = "<group>"; };
 		66BFCEFD203CBAFA00B471F5 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
-		66BFCF00203CD27700B471F5 /* PrimaryTransitionTargetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryTransitionTargetViewController.swift; sourceTree = "<group>"; };
+		66BFCF00203CD27700B471F5 /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		66BFCF04203D321900B471F5 /* CrypticGarden-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CrypticGarden-Bridging-Header.h"; sourceTree = "<group>"; };
 		66BFCF05203D321900B471F5 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
 		66BFCF06203D321900B471F5 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
@@ -86,9 +88,11 @@
 		66BFCF2D2041D98700B471F5 /* MessageChat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MessageChat.storyboard; sourceTree = "<group>"; };
 		66BFCF312041D9B200B471F5 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		66BFCF332041DB7700B471F5 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
-		66D8B442203C64B000A7C2A1 /* PrimaryContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryContentViewController.swift; sourceTree = "<group>"; };
+		66BFCF352042AC7300B471F5 /* ChatContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatContainerVC.swift; sourceTree = "<group>"; };
+		66BFCF38204409EE00B471F5 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		66D8B442203C64B000A7C2A1 /* MapContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapContentVC.swift; sourceTree = "<group>"; };
 		66D8B443203C64B000A7C2A1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		66D8B444203C64B000A7C2A1 /* DrawerContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentViewController.swift; sourceTree = "<group>"; };
+		66D8B444203C64B000A7C2A1 /* DrawerContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentVC.swift; sourceTree = "<group>"; };
 		66D8B44B203C66D200A7C2A1 /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyPassthroughScrollView.swift; sourceTree = "<group>"; };
 		66D8B44C203C66D200A7C2A1 /* PulleyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyViewController.swift; sourceTree = "<group>"; };
 		66D8B44D203C66D200A7C2A1 /* UIView+constrainToParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+constrainToParent.swift"; sourceTree = "<group>"; };
@@ -192,20 +196,30 @@
 			isa = PBXGroup;
 			children = (
 				66BFCF2D2041D98700B471F5 /* MessageChat.storyboard */,
+				84D3C8AA2007A98E003B7A01 /* AppDelegate.swift */,
+				66BFCF352042AC7300B471F5 /* ChatContainerVC.swift */,
 				66BFCF312041D9B200B471F5 /* ChatVC.swift */,
 			);
 			path = ChatVC;
+			sourceTree = "<group>";
+		};
+		66BFCF372044098600B471F5 /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				66BFCF38204409EE00B471F5 /* UserProfile.storyboard */,
+				66BFCF00203CD27700B471F5 /* UserProfileVC.swift */,
+			);
+			path = ProfileVC;
 			sourceTree = "<group>";
 		};
 		66D8B431203C4D8200A7C2A1 /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
 				66D8B443203C64B000A7C2A1 /* Main.storyboard */,
-				66D8B442203C64B000A7C2A1 /* PrimaryContentViewController.swift */,
+				66D8B442203C64B000A7C2A1 /* MapContentVC.swift */,
+				66D8B444203C64B000A7C2A1 /* DrawerContentVC.swift */,
 				841C2345200EABFA00F5A6B4 /* SearchResultMapView.swift */,
-				66D8B444203C64B000A7C2A1 /* DrawerContentViewController.swift */,
 				66BFCEFD203CBAFA00B471F5 /* MessageCell.swift */,
-				66BFCF00203CD27700B471F5 /* PrimaryTransitionTargetViewController.swift */,
 			);
 			path = HomeVC;
 			sourceTree = "<group>";
@@ -223,9 +237,9 @@
 		841C234C200EAFFC00F5A6B4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				66D8B431203C4D8200A7C2A1 /* HomeVC */,
 				847D3C7E201F38A800EC64BC /* NewMessageVC */,
 				66BFCF2C2041D97500B471F5 /* ChatVC */,
+				66BFCF372044098600B471F5 /* ProfileVC */,
 				66BFCF1220409A3700B471F5 /* PhoneVerificationVC */,
 				66BFCF282041546A00B471F5 /* ViewController+Connect.swift */,
 			);
@@ -327,8 +341,8 @@
 			children = (
 				66BFCF11204024C800B471F5 /* CrypticGarden.entitlements */,
 				84D3C8B12007A98F003B7A01 /* Assets.xcassets */,
-				84D3C8AA2007A98E003B7A01 /* AppDelegate.swift */,
 				84C0D4C62010CD5E0035E9AC /* LocationManager.swift */,
+				66D8B431203C4D8200A7C2A1 /* HomeVC */,
 				841C234C200EAFFC00F5A6B4 /* ViewControllers */,
 				841C2353200EB3A500F5A6B4 /* Models */,
 				847D3C7020174AF600EC64BC /* Network */,
@@ -440,6 +454,7 @@
 				847D3C7D201F319E00EC64BC /* AutoCompCell.xib in Resources */,
 				84D3C8B22007A98F003B7A01 /* Assets.xcassets in Resources */,
 				847D3C81201F38BE00EC64BC /* NewMessage.storyboard in Resources */,
+				66BFCF39204409EE00B471F5 /* UserProfile.storyboard in Resources */,
 				66BFCF102040184700B471F5 /* GoogleService-Info.plist in Resources */,
 				66BFCF2F2041D98800B471F5 /* MessageChat.storyboard in Resources */,
 			);
@@ -527,6 +542,7 @@
 			files = (
 				66BFCF322041D9B200B471F5 /* ChatVC.swift in Sources */,
 				847D3C7620174B2B00EC64BC /* APIConnector.swift in Sources */,
+				66BFCF362042AC7300B471F5 /* ChatContainerVC.swift in Sources */,
 				66BFCF1720409B1300B471F5 /* Phone Entry.swift in Sources */,
 				847D3C82201F38BE00EC64BC /* NewMessageVC.swift in Sources */,
 				66BFCF342041DB7800B471F5 /* UIImage+Gif.swift in Sources */,
@@ -537,7 +553,7 @@
 				844C37E220221009003806B0 /* CGLocation.swift in Sources */,
 				66D8B44F203C66D200A7C2A1 /* PulleyViewController.swift in Sources */,
 				66BFCF07203D321900B471F5 /* UIPlaceHolderTextView.m in Sources */,
-				66D8B447203C64B000A7C2A1 /* DrawerContentViewController.swift in Sources */,
+				66D8B447203C64B000A7C2A1 /* DrawerContentVC.swift in Sources */,
 				66D8B44E203C66D200A7C2A1 /* PulleyPassthroughScrollView.swift in Sources */,
 				841C2357200EB4C600F5A6B4 /* CGMessage.swift in Sources */,
 				66BFCF2420409C3700B471F5 /* CountryPicker.swift in Sources */,
@@ -549,7 +565,7 @@
 				841C2352200EB19B00F5A6B4 /* String+Functions.swift in Sources */,
 				66D8B450203C66D200A7C2A1 /* UIView+constrainToParent.swift in Sources */,
 				841C2350200EB10800F5A6B4 /* Array+Functions.swift in Sources */,
-				66BFCF01203CD27700B471F5 /* PrimaryTransitionTargetViewController.swift in Sources */,
+				66BFCF01203CD27700B471F5 /* UserProfileVC.swift in Sources */,
 				84C0D4C72010CD5E0035E9AC /* LocationManager.swift in Sources */,
 				66BFCF1820409B1300B471F5 /* PhoneVerificationController.swift in Sources */,
 				847D3C7820174EFB00EC64BC /* CGUserSession.swift in Sources */,
@@ -560,7 +576,7 @@
 				66BFCF0C203D952400B471F5 /* GrowingTextView.swift in Sources */,
 				84D3C8AB2007A98E003B7A01 /* AppDelegate.swift in Sources */,
 				841C2355200EB3D800F5A6B4 /* CGUser.swift in Sources */,
-				66D8B445203C64B000A7C2A1 /* PrimaryContentViewController.swift in Sources */,
+				66D8B445203C64B000A7C2A1 /* MapContentVC.swift in Sources */,
 				847D3C7420174B2B00EC64BC /* APIConnector+Connect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
