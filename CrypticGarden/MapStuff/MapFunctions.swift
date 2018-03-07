@@ -46,6 +46,24 @@ extension MKMapView {
         }
     }
     
+    //************************************
+    // MARK: - 3D Camera
+    //************************************
+    
+    func set3DCamera(coord:CLLocationCoordinate2D, animated:Bool) {
+        
+        let distance: CLLocationDistance = 1200
+        let pitch: CGFloat = 70
+        let heading = 00.0
+
+        let camera = MKMapCamera(lookingAtCenter: coord,
+                                 fromDistance: distance,
+                                 pitch: pitch,
+                                 heading: heading)
+        
+        self.setCamera(camera, animated: animated)
+    }
+    
     
     func viewportVisibleAnnot(_ annotViewSize:CGSize = CGSize.zero) -> Viewport {
         

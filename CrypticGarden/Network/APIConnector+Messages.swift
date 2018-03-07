@@ -28,6 +28,7 @@ extension APIConnector {
         sessionManager.request(self.absoluteURLString(path: "locations/\(locationID)"), parameters: queryParams).responseJSON { response in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
+            print(response.result.value)
             if let jsonDict = response.result.value as? [String: AnyObject], jsonDict["error"] == nil{
                 
                 let place = CGLocation(dictionary: jsonDict)
@@ -45,11 +46,18 @@ extension APIConnector {
     
     static func postMessage(_ message:CGMessage, toLocation location:CGLocation, completion:@escaping (_ success:Bool) -> Void){
         
-        let messageDict : [String:String] = [
+        var messageDict : [String:String] = [
             "text" : message.text,
             "tag": message.tag,
             "firebaseDBchannelID": message.firebaseDBchannelID
         ]
+        
+        if let lastLoc = LocationManager.shared.lastLocation {
+            print(lastLoc)
+            let distance = lastLoc.distance(from: CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+            messageDict["postDistance"] = "\(distance)"
+        }
+        
         
         let locationDict : [String:AnyObject] = [
             CGLocation.kGoogleId: location.googlePlaceId as AnyObject,

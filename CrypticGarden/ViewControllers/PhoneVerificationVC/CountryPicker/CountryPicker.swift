@@ -17,7 +17,7 @@ import CoreTelephony
 ///   - phoneCode: Phone digit code of country
 ///   - flag: Flag of country
 @objc public protocol CountryPickerDelegate {
-    func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage)
+    func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flagEmoji: String)
 }
 
 /// Structure of country code picker
@@ -25,7 +25,7 @@ public struct Country {
     public let code: String?
     public let name: String?
     public let phoneCode: String?
-    public let flagName: String
+    public let flagEmoji: String
     
     /// Country code initialization
     ///
@@ -34,15 +34,11 @@ public struct Country {
     ///   - name: String
     ///   - phoneCode: String
     ///   - flagName: String
-    init(code: String?, name: String?, phoneCode: String?, flagName: String) {
+    init(code: String?, name: String?, phoneCode: String?, flagEmoji: String) {
         self.code = code
         self.name = name
         self.phoneCode = phoneCode
-        self.flagName = flagName
-    }
-    
-    var flag: UIImage? {
-        return UIImage(named: flagName)
+        self.flagEmoji = flagEmoji
     }
 }
 
@@ -91,7 +87,8 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
         self.selectRow(row, inComponent: 0, animated: true)
         let country = countries[row]
         if let countryPickerDelegate = countryPickerDelegate {
-            countryPickerDelegate.countryPhoneCodePicker(self, didSelectCountryWithName: country.name!, countryCode: country.code!, phoneCode: country.phoneCode!, flag: country.flag!)
+            
+            countryPickerDelegate.countryPhoneCodePicker(self, didSelectCountryWithName: country.name!, countryCode: country.code!, phoneCode: country.phoneCode!, flagEmoji: country.flagEmoji)
         }
     }
     
@@ -110,7 +107,7 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
         self.selectRow(row, inComponent: 0, animated: true)
         let country = countries[row]
         if let countryPickerDelegate = countryPickerDelegate {
-            countryPickerDelegate.countryPhoneCodePicker(self, didSelectCountryWithName: country.name!, countryCode: country.code!, phoneCode: country.phoneCode!, flag: country.flag!)
+            countryPickerDelegate.countryPhoneCodePicker(self, didSelectCountryWithName: country.name!, countryCode: country.code!, phoneCode: country.phoneCode!, flagEmoji: country.flagEmoji)
         }
     }
     
@@ -123,7 +120,7 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
         var countries = [Country]()
 
         
-        guard let path = Bundle.main.path(forResource: "countryCodes", ofType: "json"), let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+        guard let path = Bundle.main.path(forResource: "countryCodes2", ofType: "json"), let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
             fatalError("cannot load json file")
         }
         
@@ -133,25 +130,67 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
                 for jsonObject in jsonObjects {
                     
                     guard let countryObj = jsonObject as? NSDictionary else {
-                        return countries
+                        fatalError("invalid country subdict")
                     }
                     
-                    guard let code = countryObj["code"] as? String, let phoneCode = countryObj["dial_code"] as? String, let name = countryObj["name"] as? String else {
-                        return countries
+                    guard let code = countryObj["code"] as? String,
+                        let phoneCode = countryObj["dial_code"] as? String,
+                        let name = countryObj["name"] as? String,
+                        let emoji = countryObj["emoji"] as? String
+                        else {
+                        fatalError("invalid country object : \(countryObj)")
                     }
                     
-                    let flagName = "\(code.uppercased())"
                     
-                    let country = Country(code: code, name: name, phoneCode: phoneCode, flagName: flagName)
+                    let country = Country(code: code, name: name, phoneCode: phoneCode, flagEmoji: emoji)
                     countries.append(country)
                 }
                 
             }
         } catch {
-            return countries
+            fatalError("countries deserialisation failed")
         }
+        
+//        createJsonprint(countries)
+
         return countries
     }
+    
+//    open static func createJsonprint(_ countries:[Country]) {
+//        guard let path = Bundle.main.path(forResource: "countryCodesEmoji", ofType: "json"), let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+//            fatalError("cannot load json file")
+//        }
+//
+//        do {
+//            if let jsonObjects = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? [String:AnyObject] {
+//
+//                var newCoutriesDictsArray:[[String:String]] = []
+//
+//                for country in countries {
+//                    if let code = country.code, let coutryDict = jsonObjects[code] as? [String:AnyObject], let emoji = coutryDict["emoji"] as? String {
+//                        let dict = [
+//                            "name": country.name!,
+//                            "dial_code": country.phoneCode!,
+//                            "code": country.code!,
+//                            "emoji": emoji
+//                        ]
+//                        newCoutriesDictsArray.append(dict)
+//                    }
+//                }
+//
+//                guard let data = try? JSONSerialization.data(withJSONObject: newCoutriesDictsArray, options: JSONSerialization.WritingOptions.prettyPrinted) else {
+//                    return
+//                }
+//                let json = String(data: data, encoding: String.Encoding.utf8)
+//
+//
+//                print(json!)
+//
+//            }
+//        } catch {
+//            fatalError("countries deserialisation failed")
+//        }
+//    }
     
     // MARK: - Picker Methods
     
@@ -202,7 +241,7 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
     open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let country = countries[row]
         if let countryPickerDelegate = countryPickerDelegate {
-            countryPickerDelegate.countryPhoneCodePicker(self, didSelectCountryWithName: country.name!, countryCode: country.code!, phoneCode: country.phoneCode!, flag: country.flag!)
+            countryPickerDelegate.countryPhoneCodePicker(self, didSelectCountryWithName: country.name!, countryCode: country.code!, phoneCode: country.phoneCode!, flagEmoji: country.flagEmoji)
         }
     }
 }

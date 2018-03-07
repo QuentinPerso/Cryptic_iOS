@@ -34,10 +34,10 @@ class CGUserSession : NSObject, NSCoding {
         
         update(dictionary: userDict);
         
-//        let saveSuccessful: Bool = KeychainWrapper.standard.set(self.accessToken!, forKey: MKSUserSession.keychainAccessTokenIdentifier)
-//        if !saveSuccessful {
-//            NSLog("Could'nt store the user accessToken to Keychain. have to relogin")
-//        }
+        let saveSuccessful: Bool = KeychainWrapper.standard.set(self.accessToken!, forKey: CGUserSession.keychainAccessTokenIdentifier)
+        if !saveSuccessful {
+            NSLog("Could'nt store the user accessToken to Keychain. have to relogin")
+        }
     }
     
     

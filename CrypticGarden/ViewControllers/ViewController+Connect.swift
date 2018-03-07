@@ -11,11 +11,11 @@ import Firebase
 
 extension UIViewController: PhoneVerificationDelegate {
     
-    func startVerification() {
+    func firebasePhoneConnect() {
         let configuration = Configuration(headerBackground: nil, requestCode: { phoneNumber, completion in
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
                 if let error = error {
-                   print(error)
+                   print("verify Phone Number error", error)
                     return
                 }
                 completion(verificationID, nil)
@@ -24,10 +24,12 @@ extension UIViewController: PhoneVerificationDelegate {
             let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: verificationCode)
             Auth.auth().signIn(with: credential) { (user, error) in
                 if let error = error {
-                    print(error)
+                    print("sign in error",error)
+                    completion(error)
                     return
                 }
                 print("log in success - user :", user?.uid ?? "no user :(")
+                
                 completion(nil)
 
             }
@@ -35,6 +37,10 @@ extension UIViewController: PhoneVerificationDelegate {
         
         let vc = PhoneVerificationController(configuration: configuration)
         present(vc, animated: true)
+    }
+    
+    private func callAPISignIn(fireBaseId:String) {
+        
     }
     
     public func cancelled(controller: PhoneVerificationController) {

@@ -9,19 +9,20 @@
 /* Begin PBXBuildFile section */
 		08652C47DFE9D686B19117AC /* Pods_CrypticGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC0AF89DC3578A8C5FB30AC /* Pods_CrypticGarden.framework */; };
 		51C66AF9BFBA4346B69FCD7B /* Pods_CrypticGarden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F12ECCC938F177AC275131 /* Pods_CrypticGarden.framework */; };
+		66AEA7EB2046FDCB00C1A37D /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AEA7E92046FDCB00C1A37D /* KeychainWrapper.swift */; };
+		66AEA7EC2046FDCB00C1A37D /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AEA7EA2046FDCB00C1A37D /* KeychainItemAccessibility.swift */; };
 		66BFCEFE203CBAFA00B471F5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCEFD203CBAFA00B471F5 /* MessageCell.swift */; };
 		66BFCF01203CD27700B471F5 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF00203CD27700B471F5 /* UserProfileVC.swift */; };
 		66BFCF07203D321900B471F5 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF06203D321900B471F5 /* UIPlaceHolderTextView.m */; };
 		66BFCF0C203D952400B471F5 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF0B203D952400B471F5 /* GrowingTextView.swift */; };
 		66BFCF0E203EA81500B471F5 /* GoogleLocalSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF0D203EA81500B471F5 /* GoogleLocalSearch.swift */; };
 		66BFCF102040184700B471F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66BFCF0F2040184600B471F5 /* GoogleService-Info.plist */; };
-		66BFCF1720409B1300B471F5 /* Phone Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF1320409B1200B471F5 /* Phone Entry.swift */; };
+		66BFCF1720409B1300B471F5 /* PhoneEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF1320409B1200B471F5 /* PhoneEntry.swift */; };
 		66BFCF1820409B1300B471F5 /* PhoneVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF1420409B1300B471F5 /* PhoneVerificationController.swift */; };
 		66BFCF1920409B1300B471F5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF1520409B1300B471F5 /* Configuration.swift */; };
-		66BFCF1A20409B1300B471F5 /* Code Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF1620409B1300B471F5 /* Code Entry.swift */; };
+		66BFCF1A20409B1300B471F5 /* CodeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF1620409B1300B471F5 /* CodeEntry.swift */; };
 		66BFCF1E20409B8800B471F5 /* PhoneVerificationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66BFCF1D20409B8800B471F5 /* PhoneVerificationController.xib */; };
 		66BFCF2420409C3700B471F5 /* CountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF2020409C3700B471F5 /* CountryPicker.swift */; };
-		66BFCF2520409C3700B471F5 /* countryCodes.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BFCF2120409C3700B471F5 /* countryCodes.json */; };
 		66BFCF2620409C3700B471F5 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF2220409C3700B471F5 /* CountryView.swift */; };
 		66BFCF2720409C3700B471F5 /* CountryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66BFCF2320409C3700B471F5 /* CountryView.xib */; };
 		66BFCF292041546A00B471F5 /* ViewController+Connect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF282041546A00B471F5 /* ViewController+Connect.swift */; };
@@ -30,6 +31,7 @@
 		66BFCF342041DB7800B471F5 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF332041DB7700B471F5 /* UIImage+Gif.swift */; };
 		66BFCF362042AC7300B471F5 /* ChatContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BFCF352042AC7300B471F5 /* ChatContainerVC.swift */; };
 		66BFCF39204409EE00B471F5 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66BFCF38204409EE00B471F5 /* UserProfile.storyboard */; };
+		66BFCF3D20455DA800B471F5 /* countryCodes2.json in Resources */ = {isa = PBXBuildFile; fileRef = 66BFCF3C20455DA800B471F5 /* countryCodes2.json */; };
 		66D8B445203C64B000A7C2A1 /* MapContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B442203C64B000A7C2A1 /* MapContentVC.swift */; };
 		66D8B446203C64B000A7C2A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D8B443203C64B000A7C2A1 /* Main.storyboard */; };
 		66D8B447203C64B000A7C2A1 /* DrawerContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B444203C64B000A7C2A1 /* DrawerContentVC.swift */; };
@@ -38,7 +40,7 @@
 		66D8B450203C66D200A7C2A1 /* UIView+constrainToParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B44D203C66D200A7C2A1 /* UIView+constrainToParent.swift */; };
 		66D8B452203C72BC00A7C2A1 /* AutoCompCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D8B451203C72BC00A7C2A1 /* AutoCompCell.swift */; };
 		841C2346200EABFA00F5A6B4 /* AutocompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2340200EABF900F5A6B4 /* AutocompleteView.swift */; };
-		841C234B200EABFA00F5A6B4 /* SearchResultMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2345200EABFA00F5A6B4 /* SearchResultMapView.swift */; };
+		841C234B200EABFA00F5A6B4 /* InteractivMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2345200EABFA00F5A6B4 /* InteractivMap.swift */; };
 		841C2350200EB10800F5A6B4 /* Array+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C234F200EB10800F5A6B4 /* Array+Functions.swift */; };
 		841C2352200EB19B00F5A6B4 /* String+Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2351200EB19B00F5A6B4 /* String+Functions.swift */; };
 		841C2355200EB3D800F5A6B4 /* CGUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C2354200EB3D800F5A6B4 /* CGUser.swift */; };
@@ -66,6 +68,8 @@
 		08E153625EEE8B8D899A027D /* Pods-CrypticGarden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrypticGarden.release.xcconfig"; path = "Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden.release.xcconfig"; sourceTree = "<group>"; };
 		1EC0AF89DC3578A8C5FB30AC /* Pods_CrypticGarden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CrypticGarden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5719473E33FF998E694777BB /* Pods-CrypticGarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrypticGarden.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CrypticGarden/Pods-CrypticGarden.debug.xcconfig"; sourceTree = "<group>"; };
+		66AEA7E92046FDCB00C1A37D /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		66AEA7EA2046FDCB00C1A37D /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		66BFCEFD203CBAFA00B471F5 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		66BFCF00203CD27700B471F5 /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		66BFCF04203D321900B471F5 /* CrypticGarden-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CrypticGarden-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -75,13 +79,12 @@
 		66BFCF0D203EA81500B471F5 /* GoogleLocalSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLocalSearch.swift; sourceTree = "<group>"; };
 		66BFCF0F2040184600B471F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		66BFCF11204024C800B471F5 /* CrypticGarden.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CrypticGarden.entitlements; sourceTree = "<group>"; };
-		66BFCF1320409B1200B471F5 /* Phone Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Phone Entry.swift"; sourceTree = "<group>"; };
+		66BFCF1320409B1200B471F5 /* PhoneEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneEntry.swift; sourceTree = "<group>"; };
 		66BFCF1420409B1300B471F5 /* PhoneVerificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationController.swift; sourceTree = "<group>"; };
 		66BFCF1520409B1300B471F5 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		66BFCF1620409B1300B471F5 /* Code Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Code Entry.swift"; sourceTree = "<group>"; };
+		66BFCF1620409B1300B471F5 /* CodeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeEntry.swift; sourceTree = "<group>"; };
 		66BFCF1D20409B8800B471F5 /* PhoneVerificationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneVerificationController.xib; sourceTree = "<group>"; };
 		66BFCF2020409C3700B471F5 /* CountryPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPicker.swift; sourceTree = "<group>"; };
-		66BFCF2120409C3700B471F5 /* countryCodes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countryCodes.json; sourceTree = "<group>"; };
 		66BFCF2220409C3700B471F5 /* CountryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		66BFCF2320409C3700B471F5 /* CountryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryView.xib; sourceTree = "<group>"; };
 		66BFCF282041546A00B471F5 /* ViewController+Connect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Connect.swift"; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 		66BFCF332041DB7700B471F5 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		66BFCF352042AC7300B471F5 /* ChatContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatContainerVC.swift; sourceTree = "<group>"; };
 		66BFCF38204409EE00B471F5 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		66BFCF3C20455DA800B471F5 /* countryCodes2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countryCodes2.json; sourceTree = "<group>"; };
 		66D8B442203C64B000A7C2A1 /* MapContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapContentVC.swift; sourceTree = "<group>"; };
 		66D8B443203C64B000A7C2A1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		66D8B444203C64B000A7C2A1 /* DrawerContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentVC.swift; sourceTree = "<group>"; };
@@ -98,7 +102,7 @@
 		66D8B44D203C66D200A7C2A1 /* UIView+constrainToParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+constrainToParent.swift"; sourceTree = "<group>"; };
 		66D8B451203C72BC00A7C2A1 /* AutoCompCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompCell.swift; sourceTree = "<group>"; };
 		841C2340200EABF900F5A6B4 /* AutocompleteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteView.swift; sourceTree = "<group>"; };
-		841C2345200EABFA00F5A6B4 /* SearchResultMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultMapView.swift; sourceTree = "<group>"; };
+		841C2345200EABFA00F5A6B4 /* InteractivMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractivMap.swift; sourceTree = "<group>"; };
 		841C234F200EB10800F5A6B4 /* Array+Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Functions.swift"; sourceTree = "<group>"; };
 		841C2351200EB19B00F5A6B4 /* String+Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Functions.swift"; sourceTree = "<group>"; };
 		841C2354200EB3D800F5A6B4 /* CGUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGUser.swift; sourceTree = "<group>"; };
@@ -173,8 +177,8 @@
 			children = (
 				66BFCF1D20409B8800B471F5 /* PhoneVerificationController.xib */,
 				66BFCF1420409B1300B471F5 /* PhoneVerificationController.swift */,
-				66BFCF1320409B1200B471F5 /* Phone Entry.swift */,
-				66BFCF1620409B1300B471F5 /* Code Entry.swift */,
+				66BFCF1320409B1200B471F5 /* PhoneEntry.swift */,
+				66BFCF1620409B1300B471F5 /* CodeEntry.swift */,
 				66BFCF1520409B1300B471F5 /* Configuration.swift */,
 				66BFCF1F20409C2100B471F5 /* CountryPicker */,
 			);
@@ -184,7 +188,7 @@
 		66BFCF1F20409C2100B471F5 /* CountryPicker */ = {
 			isa = PBXGroup;
 			children = (
-				66BFCF2120409C3700B471F5 /* countryCodes.json */,
+				66BFCF3C20455DA800B471F5 /* countryCodes2.json */,
 				66BFCF2020409C3700B471F5 /* CountryPicker.swift */,
 				66BFCF2320409C3700B471F5 /* CountryView.xib */,
 				66BFCF2220409C3700B471F5 /* CountryView.swift */,
@@ -218,7 +222,7 @@
 				66D8B443203C64B000A7C2A1 /* Main.storyboard */,
 				66D8B442203C64B000A7C2A1 /* MapContentVC.swift */,
 				66D8B444203C64B000A7C2A1 /* DrawerContentVC.swift */,
-				841C2345200EABFA00F5A6B4 /* SearchResultMapView.swift */,
+				841C2345200EABFA00F5A6B4 /* InteractivMap.swift */,
 				66BFCEFD203CBAFA00B471F5 /* MessageCell.swift */,
 			);
 			path = HomeVC;
@@ -237,6 +241,7 @@
 		841C234C200EAFFC00F5A6B4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				66D8B431203C4D8200A7C2A1 /* HomeVC */,
 				847D3C7E201F38A800EC64BC /* NewMessageVC */,
 				66BFCF2C2041D97500B471F5 /* ChatVC */,
 				66BFCF372044098600B471F5 /* ProfileVC */,
@@ -342,7 +347,6 @@
 				66BFCF11204024C800B471F5 /* CrypticGarden.entitlements */,
 				84D3C8B12007A98F003B7A01 /* Assets.xcassets */,
 				84C0D4C62010CD5E0035E9AC /* LocationManager.swift */,
-				66D8B431203C4D8200A7C2A1 /* HomeVC */,
 				841C234C200EAFFC00F5A6B4 /* ViewControllers */,
 				841C2353200EB3A500F5A6B4 /* Models */,
 				847D3C7020174AF600EC64BC /* Network */,
@@ -358,6 +362,8 @@
 		84D3C8BC2007AA43003B7A01 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				66AEA7EA2046FDCB00C1A37D /* KeychainItemAccessibility.swift */,
+				66AEA7E92046FDCB00C1A37D /* KeychainWrapper.swift */,
 				84D3C8B32007A98F003B7A01 /* LaunchScreen.storyboard */,
 				84D3C8B62007A98F003B7A01 /* Info.plist */,
 				66BFCF0F2040184600B471F5 /* GoogleService-Info.plist */,
@@ -416,7 +422,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -446,10 +452,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				847D3C7B201F30EE00EC64BC /* AutocompleteView.xib in Resources */,
+				66BFCF3D20455DA800B471F5 /* countryCodes2.json in Resources */,
 				66BFCF2720409C3700B471F5 /* CountryView.xib in Resources */,
 				66BFCF1E20409B8800B471F5 /* PhoneVerificationController.xib in Resources */,
 				84D3C8B52007A98F003B7A01 /* LaunchScreen.storyboard in Resources */,
-				66BFCF2520409C3700B471F5 /* countryCodes.json in Resources */,
 				66D8B446203C64B000A7C2A1 /* Main.storyboard in Resources */,
 				847D3C7D201F319E00EC64BC /* AutoCompCell.xib in Resources */,
 				84D3C8B22007A98F003B7A01 /* Assets.xcassets in Resources */,
@@ -543,16 +549,17 @@
 				66BFCF322041D9B200B471F5 /* ChatVC.swift in Sources */,
 				847D3C7620174B2B00EC64BC /* APIConnector.swift in Sources */,
 				66BFCF362042AC7300B471F5 /* ChatContainerVC.swift in Sources */,
-				66BFCF1720409B1300B471F5 /* Phone Entry.swift in Sources */,
+				66BFCF1720409B1300B471F5 /* PhoneEntry.swift in Sources */,
 				847D3C82201F38BE00EC64BC /* NewMessageVC.swift in Sources */,
 				66BFCF342041DB7800B471F5 /* UIImage+Gif.swift in Sources */,
-				841C234B200EABFA00F5A6B4 /* SearchResultMapView.swift in Sources */,
+				841C234B200EABFA00F5A6B4 /* InteractivMap.swift in Sources */,
 				84C0D4C52010CCE90035E9AC /* MKSAutocompleteResult.swift in Sources */,
 				66BFCF0E203EA81500B471F5 /* GoogleLocalSearch.swift in Sources */,
 				66BFCF1920409B1300B471F5 /* Configuration.swift in Sources */,
 				844C37E220221009003806B0 /* CGLocation.swift in Sources */,
 				66D8B44F203C66D200A7C2A1 /* PulleyViewController.swift in Sources */,
 				66BFCF07203D321900B471F5 /* UIPlaceHolderTextView.m in Sources */,
+				66AEA7EC2046FDCB00C1A37D /* KeychainItemAccessibility.swift in Sources */,
 				66D8B447203C64B000A7C2A1 /* DrawerContentVC.swift in Sources */,
 				66D8B44E203C66D200A7C2A1 /* PulleyPassthroughScrollView.swift in Sources */,
 				841C2357200EB4C600F5A6B4 /* CGMessage.swift in Sources */,
@@ -564,13 +571,14 @@
 				847D3C7520174B2B00EC64BC /* APIConnector+Messages.swift in Sources */,
 				841C2352200EB19B00F5A6B4 /* String+Functions.swift in Sources */,
 				66D8B450203C66D200A7C2A1 /* UIView+constrainToParent.swift in Sources */,
+				66AEA7EB2046FDCB00C1A37D /* KeychainWrapper.swift in Sources */,
 				841C2350200EB10800F5A6B4 /* Array+Functions.swift in Sources */,
 				66BFCF01203CD27700B471F5 /* UserProfileVC.swift in Sources */,
 				84C0D4C72010CD5E0035E9AC /* LocationManager.swift in Sources */,
 				66BFCF1820409B1300B471F5 /* PhoneVerificationController.swift in Sources */,
 				847D3C7820174EFB00EC64BC /* CGUserSession.swift in Sources */,
 				66BFCF292041546A00B471F5 /* ViewController+Connect.swift in Sources */,
-				66BFCF1A20409B1300B471F5 /* Code Entry.swift in Sources */,
+				66BFCF1A20409B1300B471F5 /* CodeEntry.swift in Sources */,
 				84C0D4C92010D1C10035E9AC /* MapFunctions.swift in Sources */,
 				841C2346200EABFA00F5A6B4 /* AutocompleteView.swift in Sources */,
 				66BFCF0C203D952400B471F5 /* GrowingTextView.swift in Sources */,
@@ -708,7 +716,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = CrypticGarden/CrypticGarden.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MQK5ADKQSE;
 				INFOPLIST_FILE = "$(SRCROOT)/CrypticGarden/SupportingFiles/Info.plist";
@@ -729,7 +736,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = CrypticGarden/CrypticGarden.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MQK5ADKQSE;
 				INFOPLIST_FILE = "$(SRCROOT)/CrypticGarden/SupportingFiles/Info.plist";

@@ -12,7 +12,7 @@ import MapKit
 class PlaceAnnotation:NSObject, MKAnnotation {
     
     //    let title: String?
-    let place:CGLocation!
+    var place:CGLocation!
     let coordinate: CLLocationCoordinate2D
     
     var title: String?

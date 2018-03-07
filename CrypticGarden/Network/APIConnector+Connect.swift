@@ -1,15 +1,125 @@
-////
-////  APIConnector+Connect.swift
-////  Marks
-////
-////  Created by Quentin Beaudouin on 02/11/2016.
-////  Copyright © 2016 Quentin Beaudouin. All rights reserved.
-////
 //
-////************************************
-//// MARK: - Connect
-////************************************
+//  APIConnector+Connect.swift
+//  Marks
 //
+//  Created by Quentin Beaudouin on 02/11/2016.
+//  Copyright © 2016 Quentin Beaudouin. All rights reserved.
+//
+
+//************************************
+// MARK: - Connect
+//************************************
+
+import Alamofire
+
+extension APIConnector {
+    
+    static func loginWithFirebasePhoneId(_ id:String, completion:@escaping (CGUserSession?) -> Void){
+        
+        //        NSLog("fb token : %@", fbToken)
+        
+        let queryParams:[String:String] = [ "firebase_phone_id":"\(id)"]
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        sessionManager.request(self.absoluteURLString(path: "auth/firebasephoneconnect"), parameters: queryParams).responseJSON { response in
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            //            logResponse(note: "login WithFacebookToken", value: response.result.value, meta: false)
+            
+            if let jsonDict = response.result.value as? [String: AnyObject]{
+                
+                if let error = jsonDict["error"] as? [String: AnyObject] {
+                    
+                    NSLog("error auth/fbconnect %@", error)
+                    completion(nil)
+                    return
+
+                }
+                
+                let userSession = CGUserSession(dictionary: jsonDict)
+                
+                // store user archive to NSUserDefaults
+                UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: userSession), forKey: "kSUDSavedUserSession")
+                
+                
+                self.userSession = userSession
+                
+                completion(userSession)
+                
+            }
+            else{
+                completion(nil)
+            }
+        }
+        
+    }
+    
+    static func retrieveLoginUser(){
+        // access possibly stored user/token infos
+        
+        if let savedUserData = UserDefaults.standard.data(forKey: "kSUDSavedUserSession") {
+            
+            do {
+                if let userSession = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedUserData) as? CGUserSession {
+                    
+                    let savedAccessToken = KeychainWrapper.standard.string(forKey: CGUserSession.keychainAccessTokenIdentifier)
+                    if savedAccessToken != nil {
+                        // print("access token : ", savedAccessToken!)
+                        userSession.accessToken = savedAccessToken
+                        self.userSession = userSession
+                        self.updateUserSession()
+                    }
+                    else {
+                        print("user access token not found")
+                    }
+                }
+                else {
+                    print("no logged in user")
+                }
+            }
+            catch{
+                print("error unarchive user session")
+            }
+        }
+    }
+    
+    static func updateUserSession(){
+        
+        let queryParams:[String:String] = [ "access_token" : self.userSession!.accessToken!]
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        sessionManager.request(self.absoluteURLString(path: "user/me"), parameters: queryParams).responseJSON { response in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            //            logResponse(note: "updateUserSession", value: response.result.value, meta: false)
+            
+            if let jsonDict = response.result.value as? [String: AnyObject]{
+                
+                if let errorDict = jsonDict["error"] as? [String:AnyObject] {
+                    
+                    if errorDict["code"] as? String == "105" {
+                        print("session expirée")
+                    }
+                    print("error update user session", errorDict)
+                    //                    self.disconnect()
+                }
+                else if self.userSession != nil {
+                    self.userSession?.update(dictionary: jsonDict)
+                    
+                    // store user archive to NSUserDefaults
+                    UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: userSession!), forKey: "kSUDSavedUserSession")
+                }
+            }
+            else {
+                print("network error update user session")
+                //                self.disconnect()
+            }
+        }
+    }
+
+
+}
+
 //import FBSDKCoreKit
 //import FBSDKLoginKit
 //

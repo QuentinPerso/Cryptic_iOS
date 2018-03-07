@@ -157,6 +157,7 @@ extension NewMessageVC {
         self.dismiss(animated: true, completion: nil)
         
         APIConnector.postMessage(message, toLocation: locationToAdd) { [weak self] (success) in
+            print(self, success)
             if self != nil, success {
                 self?.messageAddedAction?(self!.locationToAdd, message)
             }

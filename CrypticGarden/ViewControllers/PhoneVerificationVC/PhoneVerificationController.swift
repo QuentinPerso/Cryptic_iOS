@@ -18,8 +18,8 @@ open class PhoneVerificationController: UIViewController {
 	@IBOutlet var headerForegroundImageView: UIImageView!
 	@IBOutlet var phoneContainerView: UIView!
 	@IBOutlet var phoneActivityIndicator: UIActivityIndicatorView!
-	@IBOutlet var phoneCountryImageView: UIImageView!
-	@IBOutlet var phoneCountryField: UITextField!
+    @IBOutlet weak var phoneCoutryEmoji: UILabel!
+    @IBOutlet var phoneCountryField: UITextField!
 	@IBOutlet var phoneNumberField: UITextField!
 	@IBOutlet var phoneSendButton: UIButton!
 	@IBOutlet var phoneCancelButton: UIButton!

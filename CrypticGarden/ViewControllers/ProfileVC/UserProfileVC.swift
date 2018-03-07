@@ -28,7 +28,7 @@ class UserProfileVC: UIViewController {
             connectButton.setTitle("Connect", for: .normal)
         }
         else {
-            startVerification()
+            firebasePhoneConnect()
         }
         
         

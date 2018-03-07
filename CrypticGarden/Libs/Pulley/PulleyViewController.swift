@@ -172,6 +172,8 @@ open class PulleyViewController: UIViewController, PulleyDrawerViewControllerDel
             guard let controller = primaryContentViewController else {
                 return
             }
+            
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
 
             controller.willMove(toParentViewController: nil)
             controller.view.removeFromSuperview()

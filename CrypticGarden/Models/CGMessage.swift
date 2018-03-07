@@ -17,6 +17,7 @@ class CGMessage: NSObject, NSCoding {
     var tag: String!
     var firebaseDBchannelID:String!
     var postDate: Int?
+    var postDistance: Double?
 
     
     override init() {
@@ -36,6 +37,10 @@ class CGMessage: NSObject, NSCoding {
         self.text = dictionary["text"] as? String
         self.tag = dictionary["tag"] as? String
         self.postDate = dictionary["postDate"] as? Int
+        if let distStr = dictionary["postDistance"] as? String {
+            self.postDistance = Double(distStr)
+        }
+        
 
         super.init()
 
